@@ -44,6 +44,13 @@ We partner with:
 - Top AI model providers advancing automated security research
 - Security researchers exploring AI-powered discovery
 
+## 🤖 AI Models Used
+
+Our automated vulnerability discovery leverages cutting-edge large language models:
+- **GPT-5.5** - Advanced reasoning and code analysis
+- **Claude Opus 4.8** - Deep security pattern recognition
+- **DeepSeek V4** - Specialized vulnerability detection
+
 ## 📂 Vulnerability Submission Format
 
 All disclosed vulnerabilities follow a standardized directory structure:
