@@ -2,6 +2,10 @@
 
 > **0day vulnerabilities have become rubbish in the AI era.**
 
+**Official Website**: [https://0day-rubbish.com](https://0day-rubbish.com)
+
+---
+
 ## 🎯 Why This Exists
 
 Traditional vulnerability disclosure is broken. It's slow, bureaucratic, and ineffective. In the AI era, we can mass-produce 0days at scale—making individual vulnerabilities less valuable but more impactful when disclosed directly.
