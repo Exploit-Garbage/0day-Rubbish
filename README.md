@@ -2,7 +2,37 @@
 
 > **0day vulnerabilities have become rubbish in the AI era.**
 
-**Official Website**: [https://0day-rubbish.com](https://0day-rubbish.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![0-days disclosed](https://img.shields.io/badge/0--days_disclosed-11-red)](https://0day-rubbish.com/blog)
+[![Max CVSS](https://img.shields.io/badge/Max_CVSS-9.8-critical)](https://0day-rubbish.com/blog)
+[![PoC](https://img.shields.io/badge/Every_advisory-working_PoC-blue)](https://0day-rubbish.com/blog)
+[![Website](https://img.shields.io/badge/Website-0day--rubbish.com-brightgreen)](https://0day-rubbish.com)
+
+**🌐 Official Website**: <https://0day-rubbish.com/blog>
+
+---
+
+## 📋 Disclosed Vulnerabilities
+
+An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
+
+| # | Product | Affected Version | CVSS | Class | Advisory & PoC |
+|---|---------|------------------|------|-------|-----------------|
+| 1 | InterSystems IRIS | 2026.1.0.234.1 | **9.8** | Unauth RCE | [FolderManager Property Injection → RCE](https://0day-rubbish.com/blog/intersystems-iris-foldermanager-rce) |
+| 2 | AdRem NetCrunch | 16.0.0.8397 RC | **9.8** | Unauth RCE (SYSTEM) | [Cross-Session Hijack → RCE](https://0day-rubbish.com/blog/adrem-netcrunch-session-hijack-rce) |
+| 3 | Altus BluePlant | 9.1.40 | **9.8** | Unauth RCE | [Hardcoded Credentials → RCE](https://0day-rubbish.com/blog/altus-blueplant-hardcoded-creds-rce) |
+| 4 | Brekeke SIP Server | v3.19.1.8p1 | **9.8** | Unauth RCE | [Nashorn JS Engine → RCE](https://0day-rubbish.com/blog/brekeke-sip-server-nashorn-rce) |
+| 5 | Brekeke SIP Server | v3.19.1.8p1 | **9.8** | Unauth RCE (Zip Slip) | [Zip Slip Webshell → RCE](https://0day-rubbish.com/blog/brekeke-sip-server-zipslip-rce) |
+| 6 | DataSunrise Suite | 11.2.17.12820 | **9.8** | Unauth RCE | [Email Verification Brute Force → RCE](https://0day-rubbish.com/blog/datasunrise-email-bruteforce-rce) |
+| 7 | Cisco CUCM | 14.0 | **9.8** | RCE Chain | [Multi-stage RCE Chain](https://0day-rubbish.com/blog/cisco-cucm-rce-chain) |
+| 8 | Brekeke SIP Server | v3.19.1.8p1 | **9.1** | Auth Bypass | [Auth Fail-Open → 23 Unauth Beans](https://0day-rubbish.com/blog/brekeke-sip-server-auth-failopen) |
+| 9 | Acumatica ERP | 2026 R1 | **8.8** | Auth RCE | [Customization Publish Webshell → RCE](https://0day-rubbish.com/blog/acumatica-customization-webshell-rce) |
+| 10 | AdRem NetCrunch | 16.0.0.8397 RC | **8.8** | Auth RCE (SYSTEM) | [Startup Script → RCE](https://0day-rubbish.com/blog/adrem-netcrunch-startup-script-rce) |
+| 11 | Altus iX Developer | 2.53.65422 | **7.3** | Local/UI RCE | [XAML Deserialization → RCE](https://0day-rubbish.com/blog/altus-ix-developer-xaml-rce) |
+
+**Totals**: 11 advisories · 8 vendors · 7 critical (CVSS ≥ 9.0) · 9 unauthenticated · all with reproducible PoC.
+
+> New advisories are added irregularly. Watch the repo or follow <https://0day-rubbish.com/blog>.
 
 ---
 
