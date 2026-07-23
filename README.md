@@ -32,7 +32,21 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 **Totals**: 11 advisories · 8 vendors · 7 critical (CVSS ≥ 9.0) · 9 unauthenticated · all with reproducible PoC.
 
-> New advisories are added irregularly. Watch the repo or follow <https://0day-rubbish.com/blog>.
+---
+
+## 🔁 This is an Ongoing Series — Not a One-Time Dump
+
+This is **Batch #1**. The AI-driven discovery pipeline runs continuously, and new batches of verified 0-days with full PoCs are published on a regular cadence.
+
+- **Last batch**: 2026-07-15 (11 advisories)
+- **Next batch**: **August 2026** — coming soon
+- **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
+
+If you want to catch the next drop the moment it lands:
+
+[![Star](https://img.shields.io/badge/⭐_Star-bookmark_this_repo-yellow)](https://github.com/Exploit-Garbage/0day-Rubbish) [![Watch](https://img.shields.io/badge/👁_Watch-get_notified_on_new_batches-blue)](https://github.com/Exploit-Garbage/0day-Rubbish/subscription) [![Blog](https://img.shields.io/badge/🌐_Follow-0day--rubbish.com%2Fblog-brightgreen)](https://0day-rubbish.com/blog)
+
+> ⭐ **Star** to bookmark · 👁 **Watch** (custom → Releases + Discussions) for new batches · 🌐 **Follow** the blog for per-advisory updates.
 
 ---
 
