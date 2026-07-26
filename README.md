@@ -94,10 +94,11 @@ We partner with:
 
 ## 🤖 AI Models Used
 
-Our automated vulnerability discovery leverages cutting-edge large language models:
-- **GPT-5.5** - Advanced reasoning and code analysis
-- **Claude Opus 4.8** - Deep security pattern recognition
-- **DeepSeek V4** - Specialized vulnerability detection
+Our automated vulnerability discovery leverages cutting-edge large language models from leading AI providers:
+- **OpenAI** - Advanced reasoning and code analysis
+- **Anthropic** - Deep security pattern recognition
+- **DeepSeek** - Specialized vulnerability detection
+- **Kimi (Moonshot AI)** - Long-context security analysis
 
 ## 📂 Vulnerability Submission Format
 
