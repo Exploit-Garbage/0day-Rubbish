@@ -9,8 +9,10 @@
 [![PoC](https://img.shields.io/badge/Every_advisory-working_PoC-blue)](https://0day-rubbish.com/blog)
 [![Website](https://img.shields.io/badge/Website-0day--rubbish.com-brightgreen)](https://0day-rubbish.com)
 [![GitHub stars](https://img.shields.io/github/stars/Exploit-Garbage/0day-Rubbish?style=flat&logo=github)](https://github.com/Exploit-Garbage/0day-Rubbish/stargazers)
+[![Watchers](https://img.shields.io/github/watchers/Exploit-Garbage/0day-Rubbish?style=flat&logo=github)](https://github.com/Exploit-Garbage/0day-Rubbish/subscription)
 [![Discussions](https://img.shields.io/github/discussions/Exploit-Garbage/0day-Rubbish?logo=github)](https://github.com/Exploit-Garbage/0day-Rubbish/discussions)
 [![Latest batch](https://img.shields.io/github/v/release/Exploit-Garbage/0day-Rubbish?label=latest%20batch)](https://github.com/Exploit-Garbage/0day-Rubbish/releases)
+[![Last commit](https://img.shields.io/github/last-commit/Exploit-Garbage/0day-Rubbish?style=flat&logo=git)](https://github.com/Exploit-Garbage/0day-Rubbish/commits)
 
 **🌐 Official Website**: <https://0day-rubbish.com/blog>
 
