@@ -1,9 +1,9 @@
 What comes next? I hope it will be social infrastructure that can impact the real physical world, such as electricity, nuclear energy, aerospace, and more.
 
-We run the research pipeline on two EC2 instances, consuming roughly five hundred million tokens per day. At that cadence the pipeline produces, on average, two new 0-day findings per day. We are still improving efficiency and expect the throughput to keep climbing.
+Thanks to continuous optimization of the research pipeline, we can now produce new 0-day findings at a stable daily rate. The system keeps improving, and throughput continues to climb.
 
 In the process we have uncovered an enormous attack surface across the long tail of closed-source vendors — the segment that traditional security firms underserve. This is only the beginning.
 
-This is an ongoing series — watch the repo to catch the next drop.
+This is an ongoing series. Going forward, we plan to disclose vulnerabilities on a weekly cadence — watch the repo to catch the next drop.
 
-See you in two weeks.
+See you soon.

@@ -3,24 +3,15 @@
 > **0day vulnerabilities have become rubbish in the AI era.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![0-days disclosed](https://img.shields.io/badge/0--days_disclosed-27-red)](https://0day-rubbish.com/blog)
+[![Latest batch](https://img.shields.io/badge/Latest_batch-8_advisories-red)](https://0day-rubbish.com/blog)
 [![Max CVSS](https://img.shields.io/badge/Max_CVSS-9.8-critical)](https://0day-rubbish.com/blog)
-[![Batches](https://img.shields.io/badge/Batches-2_live-orange)](https://0day-rubbish.com/blog)
 [![PoC](https://img.shields.io/badge/Every_advisory-working_PoC-blue)](https://0day-rubbish.com/blog)
 [![Website](https://img.shields.io/badge/Website-0day--rubbish.com-brightgreen)](https://0day-rubbish.com)
-[![GitHub stars](https://img.shields.io/github/stars/Exploit-Garbage/0day-Rubbish?style=flat&logo=github)](https://github.com/Exploit-Garbage/0day-Rubbish/stargazers)
 [![Watchers](https://img.shields.io/github/watchers/Exploit-Garbage/0day-Rubbish?style=flat&logo=github)](https://github.com/Exploit-Garbage/0day-Rubbish/subscription)
 [![Discussions](https://img.shields.io/github/discussions/Exploit-Garbage/0day-Rubbish?logo=github)](https://github.com/Exploit-Garbage/0day-Rubbish/discussions)
-[![Latest batch](https://img.shields.io/github/v/release/Exploit-Garbage/0day-Rubbish?label=latest%20batch)](https://github.com/Exploit-Garbage/0day-Rubbish/releases)
 [![Last commit](https://img.shields.io/github/last-commit/Exploit-Garbage/0day-Rubbish?style=flat&logo=git)](https://github.com/Exploit-Garbage/0day-Rubbish/commits)
 
 **🌐 Official Website**: <https://0day-rubbish.com/blog>
-
-<p align="center">
-  <a href="https://star-history.com/#Exploit-Garbage/0day-Rubbish&Date">
-    <img src="https://api.star-history.com/svg?repos=Exploit-Garbage/0day-Rubbish&type=Date" alt="Star History" width="600" />
-  </a>
-</p>
 
 ---
 
@@ -81,54 +72,31 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Batch #1 — July 2026 (12 advisories)
+### Latest Batch — August 2026 (8 advisories)
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | InterSystems IRIS | 2026.1.0.234.1 | **9.8** | Unauth RCE | [FolderManager Property Injection → RCE](https://0day-rubbish.com/blog/intersystems-iris-foldermanager-rce) |
-| 2 | AdRem NetCrunch | 16.0.0.8397 RC | **9.8** | Unauth RCE (SYSTEM) | [Cross-Session Hijack → RCE](https://0day-rubbish.com/blog/adrem-netcrunch-session-hijack-rce) |
-| 3 | Altus BluePlant | 9.1.40 | **9.8** | Unauth RCE | [Hardcoded Credentials → RCE](https://0day-rubbish.com/blog/altus-blueplant-hardcoded-creds-rce) |
-| 4 | Brekeke SIP Server | v3.19.1.8p1 | **9.8** | Unauth RCE | [Nashorn JS Engine → RCE](https://0day-rubbish.com/blog/brekeke-sip-server-nashorn-rce) |
-| 5 | Brekeke SIP Server | v3.19.1.8p1 | **9.8** | Unauth RCE (Zip Slip) | [Zip Slip Webshell → RCE](https://0day-rubbish.com/blog/brekeke-sip-server-zipslip-rce) |
-| 6 | DataSunrise Suite | 11.2.17.12820 | **9.8** | Unauth RCE | [Email Verification Brute Force → RCE](https://0day-rubbish.com/blog/datasunrise-email-bruteforce-rce) |
-| 7 | Cisco CUCM | 14.0 | **9.8** | RCE Chain | [Multi-stage RCE Chain](https://0day-rubbish.com/blog/cisco-cucm-rce-chain) |
-| 8 | SonicWall SMA 1000 | 12.4.2 | **9.8** | Pre-Auth RCE | [Struts 1 Property Injection → Deserialization RCE](https://0day-rubbish.com/blog/sonicwall-sma-preauth-deserialization-rce) |
-| 9 | Brekeke SIP Server | v3.19.1.8p1 | **9.1** | Auth Bypass | [Auth Fail-Open → 23 Unauth Beans](https://0day-rubbish.com/blog/brekeke-sip-server-auth-failopen) |
-| 10 | Acumatica ERP | 2026 R1 | **8.8** | Auth RCE | [Customization Publish Webshell → RCE](https://0day-rubbish.com/blog/acumatica-customization-webshell-rce) |
-| 11 | AdRem NetCrunch | 16.0.0.8397 RC | **8.8** | Auth RCE (SYSTEM) | [Startup Script → RCE](https://0day-rubbish.com/blog/adrem-netcrunch-startup-script-rce) |
-| 12 | Altus iX Developer | 2.53.65422 | **7.3** | Local/UI RCE | [XAML Deserialization → RCE](https://0day-rubbish.com/blog/altus-ix-developer-xaml-rce) |
+| 1 | Confluent Platform | 7.9.1-ce | **9.8** | Unauth RCE (Root) | [ksqlDB CREATE SINK CONNECTOR → RCE](https://0day-rubbish.com/blog/ksqldb-unauth-sink-connector-cron-rce) |
+| 2 | Ontotext GraphDB | 11.4.3 | **9.8** | Unauth RCE (Root) | [.pie Ruleset Prefix Injection → RCE](https://0day-rubbish.com/blog/graphdb-pie-unicode-escape-unauth-rce) |
+| 3 | ObjectDB | 2.9.5 | **9.8** | Unauth RCE (Root) | [JDOQL Filter Injection → RCE](https://0day-rubbish.com/blog/objectdb-jdoql-injection-root-rce) |
+| 4 | Wyn Enterprise | 9.1.00145.0 | **9.8** | Unauth RCE (Root) | [Token Forgery + Zip-Slip + Provider Load → RCE](https://0day-rubbish.com/blog/wyn-enterprise-unauth-rce) |
+| 5 | MAPS SCADA | 4.0.5.5 | **9.8** | Unauth RCE (SYSTEM) | [BinaryFormatter Deserialization → RCE](https://0day-rubbish.com/blog/maps-scada-unauth-binaryformatter-rce) |
+| 6 | DataStax Enterprise | 6.8.49 | **9.8** | Unauth RCE | [Gremlin-Groovy Sandbox Bypass → RCE](https://0day-rubbish.com/blog/dse-gremlin-sandbox-bypass-rce) |
+| 7 | nanoDLP | stable #10729 | **9.8** | Unauth RCE (Root) | [G-code Injection → RCE](https://0day-rubbish.com/blog/nanodlp-unauth-gcode-injection-rce) |
+| 8 | iMonnit Express | 4.0.5.5 | **9.8** | Unauth RCE (SYSTEM) | [Auth Bypass + Path Traversal + Plugin Load → RCE](https://0day-rubbish.com/blog/imonnit-express-unauth-plugin-rce) |
 
-### Batch #2 — August 2026 (15 advisories)
+**Totals**: 8 advisories · 8 vendors · 8 critical (CVSS ≥ 9.0) · 8 unauthenticated · all with reproducible PoC.
 
-| # | Product | Affected Version | CVSS | Class | Advisory & PoC |
-|---|---------|------------------|------|-------|-----------------|
-| 13 | Apache Struts 2 | 6.11.0 | **9.8** | Unauth RCE (Root) | [RestfulActionMapper OGNL Injection → RCE](https://0day-rubbish.com/blog/apache-struts2-restful-mapper-ognl-rce) |
-| 14 | AOMEI Cyber Backup | 2.3.0 | **9.8** | Unauth RCE (Root) | [Thrift NAS Mount Injection → RCE](https://0day-rubbish.com/blog/aomei-cyber-backup-thrift-nas-mount-rce) |
-| 15 | Xeams | 10.3 (build 6449) | **9.8** | Unauth RCE (Root) | [SMTP X-SM_SAVE_BODY File Write → RCE](https://0day-rubbish.com/blog/xeams-smtp-savebody-cron-rce) |
-| 16 | Xeams | 10.3 (build 6449) | **9.8** | Unauth RCE (Root) | [SQLRunner Derby Hardcoded Creds → JSP Webshell](https://0day-rubbish.com/blog/xeams-unauth-sqlrunner-derby-jsp-rce) |
-| 17 | atvise SCADA | 3.13.0 | **9.8** | Unauth RCE (Root) | [OPC UA Auth Bypass + V8 Injection → RCE](https://0day-rubbish.com/blog/atvise-scada-opcua-unauth-rce) |
-| 18 | CIRCUTOR PowerStudio | 24.11.6.0 | **9.8** | Unauth RCE (SYSTEM) | [JWT alg=none + shellExecute → RCE](https://0day-rubbish.com/blog/circutor-powerstudio-unauth-shellExecute-rce) |
-| 19 | CatDV Server | 10.7.8 | **9.8** | Unauth RCE (Root) | [RMI ClientID Minting → aaftoolPath RCE](https://0day-rubbish.com/blog/catdv-server-unauth-rmi-root-rce) |
-| 20 | CatDV Server | 10.7.8 | **9.8** | Default Credentials | [Factory-Default Empty Admin Password](https://0day-rubbish.com/blog/catdv-server-admin-factory-default-empty-password) |
-| 21 | Vicon Valerus | 25.200.46.0 | **9.8** | Unauth RCE (SYSTEM) | [OWIN Web API Command Injection → RCE](https://0day-rubbish.com/blog/vicon-valerus-unauth-cmd-injection-rce) |
-| 22 | Stimulsoft Server | 2026.3.1 | **9.8** | Unauth RCE (SYSTEM) | [Signup + Report-Script Compilation → RCE](https://0day-rubbish.com/blog/stimulsoft-server-unauth-report-script-rce) |
-| 23 | Plastic SCM (Unity) | 11.0.16.10303 | **9.8** | Unauth RCE | [Name-Only ACL 8087 Trigger → RCE](https://0day-rubbish.com/blog/plastic-scm-unauth-8087-rce) |
-| 24 | vMix | 29.0.0.48 | **9.8** | Unauth RCE (Admin) | [VBScript Blocklist Bypass → RCE](https://0day-rubbish.com/blog/vmix-vbscript-blocklist-bypass-rce) |
-| 25 | atvise SCADA | 3.13.0 | **8.8** | Default-Cred RCE (Root) | [WebMI Default Credential + V8 Injection → RCE](https://0day-rubbish.com/blog/atvise-scada-webmi-auth-rce) |
-| 26 | CIRCUTOR PowerStudio | 24.11.6.0 | **8.6** | Auth Bypass | [JWT alg=none Identity Forgery](https://0day-rubbish.com/blog/circutor-powerstudio-jwt-alg-none-identity-forgery) |
-| 27 | CatDV Server | 10.7.8 | **7.6** | Auth RCE (Root) | [aaftoolPath Property Injection → RCE](https://0day-rubbish.com/blog/catdv-server-aaftoolPath-root-rce) |
-
-**Totals**: 27 advisories · 18 vendors · 21 critical (CVSS ≥ 9.0) · 20 unauthenticated · all with reproducible PoC.
+*Earlier batches: [Batch #1 — July 2026](https://0day-rubbish.com/blog) · [Batch #2 — August 2026](https://0day-rubbish.com/blog)*
 
 ---
 
-## 🔁 An Ongoing Series — New Batch Every Two Weeks
+## 🔁 An Ongoing Series — Weekly Disclosures
 
-This is a **continuous disclosure series**. The AI-driven discovery pipeline runs around the clock, and a new batch of verified 0-days with full PoCs lands **roughly every two weeks**.
+This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Batch #1**: July 2026 — 12 advisories (live)
-- **Batch #2**: August 2026 — 15 advisories (live)
-- **Next drop**: late August 2026
+- **Latest batch**: August 2026 — 8 advisories (live)
+- **Next drop**: weekly
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
 If you want to catch the next drop the moment it lands:
