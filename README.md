@@ -76,18 +76,18 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | Confluent Platform | 7.9.1-ce | **9.8** | Unauth RCE (Root) | [ksqlDB CREATE SINK CONNECTOR → RCE](https://0day-rubbish.com/blog/ksqldb-unauth-sink-connector-cron-rce) |
-| 2 | Ontotext GraphDB | 11.4.3 | **9.8** | Unauth RCE (Root) | [.pie Ruleset Prefix Injection → RCE](https://0day-rubbish.com/blog/graphdb-pie-unicode-escape-unauth-rce) |
-| 3 | ObjectDB | 2.9.5 | **9.8** | Unauth RCE (Root) | [JDOQL Filter Injection → RCE](https://0day-rubbish.com/blog/objectdb-jdoql-injection-root-rce) |
-| 4 | Wyn Enterprise | 9.1.00145.0 | **9.8** | Unauth RCE (Root) | [Token Forgery + Zip-Slip + Provider Load → RCE](https://0day-rubbish.com/blog/wyn-enterprise-unauth-rce) |
-| 5 | MAPS SCADA | 4.0.5.5 | **9.8** | Unauth RCE (SYSTEM) | [BinaryFormatter Deserialization → RCE](https://0day-rubbish.com/blog/maps-scada-unauth-binaryformatter-rce) |
-| 6 | DataStax Enterprise | 6.8.49 | **9.8** | Unauth RCE | [Gremlin-Groovy Sandbox Bypass → RCE](https://0day-rubbish.com/blog/dse-gremlin-sandbox-bypass-rce) |
-| 7 | nanoDLP | stable #10729 | **9.8** | Unauth RCE (Root) | [G-code Injection → RCE](https://0day-rubbish.com/blog/nanodlp-unauth-gcode-injection-rce) |
-| 8 | iMonnit Express | 4.0.5.5 | **9.8** | Unauth RCE (SYSTEM) | [Auth Bypass + Path Traversal + Plugin Load → RCE](https://0day-rubbish.com/blog/imonnit-express-unauth-plugin-rce) |
+| 1 | GE PulseNET Enterprise | 6.0.3 | **9.8** | Default creds + Path Traversal (Root) | [ResourceFile Path Traversal → RCE](https://0day-rubbish.com/blog/ge-pulsenet-resource-file-path-traversal-rce) |
+| 2 | Kerio Connect | 10.0.9 Patch 2 | **8.8** | Auth Cmd Injection (Root) | [Server.startEncryption Cmd Injection → RCE](https://0day-rubbish.com/blog/kerio-connect-startencryption-cmd-injection-rce) |
+| 3 | Lansweeper | 12.2.1.0 | **8.8** | Auth 2nd-Order SQLi → xp_cmdshell | [LicenseActions SQLi → RCE](https://0day-rubbish.com/blog/lansweeper-licenseactions-sqli-xpcmdshell-rce) |
+| 4 | Plixer Scrutinizer | 19.7.0 | **8.8** | Auth SQLi → pg_cron RCE | [ORDER BY SQLi → RCE](https://0day-rubbish.com/blog/plixer-scrutinizer-orderby-sqli-pgcron-rce) |
+| 5 | Telaeris XPressEntry | 3.7.7454 | **9.8** | Unauth SQLi → xp_cmdshell | [Unauth SQLi → RCE](https://0day-rubbish.com/blog/telaeris-xpressentry-unauth-sqli-xpcmdshell-rce) |
+| 6 | Output Messenger Server | 2.0.x | **9.8** | Unauth Zip-Slip (SYSTEM) | [Zip-Slip Plugin Plant → RCE](https://0day-rubbish.com/blog/output-messenger-unauth-zipslip-plugin-rce) |
+| 7 | Cinegy Cinegize | 2026-02-05 | **9.8** | Unauth Deserialization (SYSTEM) | [BinaryFormatter → RCE](https://0day-rubbish.com/blog/cinegy-cinegize-unauth-binaryformatter-rce) |
+| 8 | MidVision RapidDeploy | 5.2.2 | **9.8** | Unauth File Write (Root) | [Remote Agent Arbitrary File Write → RCE](https://0day-rubbish.com/blog/midvision-rapiddeploy-unauth-file-write-rce) |
 
-**Totals**: 8 advisories · 8 vendors · 8 critical (CVSS ≥ 9.0) · 8 unauthenticated · all with reproducible PoC.
+**Totals**: 8 advisories · 8 vendors · 5 unauthenticated · 3 authenticated (deep-chain) · 5 root/SYSTEM · all with reproducible PoC.
 
-*Earlier batches: [Batch #1 — July 2026](https://0day-rubbish.com/blog) · [Batch #2 — August 2026](https://0day-rubbish.com/blog)*
+*Earlier batches: [Batch #1 — July 2026](https://0day-rubbish.com/blog) · [Batch #2 — August 2026](https://0day-rubbish.com/blog) · [Batch #3 — August 2026](https://0day-rubbish.com/blog)*
 
 ---
 
@@ -95,7 +95,7 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: August 2026 — 8 advisories (live)
+- **Latest batch**: August 2026 — 8 advisories (live); cumulative 43 across 4 batches
 - **Next drop**: weekly
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
