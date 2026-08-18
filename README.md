@@ -72,22 +72,21 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Latest Batch — Batch 5 (8 advisories)
+### Latest Batch — Batch 6 (7 advisories)
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | HiveMQ Platform | 4.54.0 | **9.8** | Default creds + Zip-Slip (Root) | [Data Hub Zip-Slip → Root RCE](https://0day-rubbish.com/blog/hivemq-zipslip-cron-root-rce) |
-| 2 | GigaSpaces XAP | 16.1.1 | **9.8** | Unauth Path Traversal → Webshell (Root) | [Unauth Path Traversal → Root RCE](https://0day-rubbish.com/blog/gigaspaces-xap-unauth-webshell) |
-| 3 | IceWarp Server | 14.3.0 | **9.0** | Auth Config + Unauth Trigger → UNC DLL (SYSTEM) | [Static Route UNC DLL → SYSTEM RCE](https://0day-rubbish.com/blog/icewarp-unc-dll-rce) |
-| 4 | KeyHelp | 26.0 | **7.2** | Auth Apache Directive Pipe (Root) | [Custom Directive ErrorLog Pipe → Root RCE](https://0day-rubbish.com/blog/keyhelp-errorlog-pipe-root) |
-| 5 | Loadbalancer.org ADC | 8.13.8 | **8.8** | Auth Cmd Injection → sudo (Root) | [Deployment Template Cmd Injection → Root RCE](https://0day-rubbish.com/blog/loadbalancer-org-template-root) |
-| 6 | Biamp Vocia MS-1 | 1.2.27 | **9.8** | Hardcoded Creds + Supervisor Exec (Root) | [FTPS Hardcoded Creds → Root RCE](https://0day-rubbish.com/blog/biamp-vocia-ftps-root) |
-| 7 | Voicent Call Center | 10.10.1 | **9.8** | Unauth Auth Bypass + Webshell (Root) | [SaveFileServlet Unauth → Root RCE](https://0day-rubbish.com/blog/voicent-savefile-unauth-rce) |
-| 8 | Joget Workflow Enterprise | 9.1.0.1 | **9.8** | Unauth jrxml Expression Injection (Root) | [JasperReports Expression Injection → Root RCE](https://0day-rubbish.com/blog/joget-jrxml-expr-rce) |
+| 1 | JetBrains Datalore On-Premises | 2026.2.3 | **9.8** | Unauth RCE via InteractiveReport access-mapping flaw | [InteractiveReport READ→EXECUTE → Unauth RCE](https://0day-rubbish.com/blog/jetbrains-datalore-interactive-report-unauth-rce) |
+| 2 | Docmosis Tornado | 2.11.3 | **9.8** | Unauth Arbitrary File Write → cron (Root) | [storeTo=file: → Root RCE](https://0day-rubbish.com/blog/docmosis-tornado-unauth-storeto-file-rce) |
+| 3 | ActFax | 10.70 | **9.8** | Unauth LPD Ghostscript %pipe% (SYSTEM) | [LPD %pipe% → SYSTEM RCE](https://0day-rubbish.com/blog/actfax-unauth-lpd-gs-pipe-system-rce) |
+| 4 | RoboTask | 11.0.5.1229 | **9.8** | Unauth REST API Task Execution | [REST API Unauth → Task RCE](https://0day-rubbish.com/blog/robotask-rest-api-unauth-task-execution) |
+| 5 | Countersoft Gemini | 7.3.0 | **8.8** | Auth SQLi → xp_cmdshell (SYSTEM-able) | [SQLi → xp_cmdshell RCE](https://0day-rubbish.com/blog/countersoft-gemini-sqli-xp-cmdshell-rce) |
+| 6 | Veeam ONE Reporter | 13.1 | **8.8** | Auth Command Injection → Local Admin | [CommandExecutor → Local Admin RCE](https://0day-rubbish.com/blog/veeam-one-commandexecutor-postauth-rce) |
+| 7 | Wavestore VMS | 6.48.809 | **8.8** | Auth Cmd Injection → Root | [venusd /simple/export → Root RCE](https://0day-rubbish.com/blog/wavestore-vms-simple-export-root-rce) |
 
-**Totals**: 8 advisories · 8 vendors · 5 unauthenticated · 3 authenticated (deep-chain) · 8 root/SYSTEM · all with reproducible PoC.
+**Totals**: 7 advisories · 7 vendors · 4 unauthenticated · 3 authenticated (deep-chain) · 6 root/SYSTEM · all with reproducible PoC.
 
-*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog)*
+*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog)*
 
 ---
 
@@ -95,7 +94,7 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: Batch 5 — 8 advisories (live); cumulative 51 across 5 batches
+- **Latest batch**: Batch 6 — 7 advisories (live); cumulative 58 across 6 batches
 - **Next drop**: weekly
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
