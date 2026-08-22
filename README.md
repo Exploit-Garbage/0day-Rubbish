@@ -3,7 +3,7 @@
 > **0day vulnerabilities have become rubbish in the AI era.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Latest batch](https://img.shields.io/badge/Latest_batch-8_advisories-red)](https://0day-rubbish.com/blog)
+[![Latest batch](https://img.shields.io/badge/Latest_batch-10_advisories-red)](https://0day-rubbish.com/blog)
 [![Max CVSS](https://img.shields.io/badge/Max_CVSS-9.8-critical)](https://0day-rubbish.com/blog)
 [![PoC](https://img.shields.io/badge/Every_advisory-working_PoC-blue)](https://0day-rubbish.com/blog)
 [![Website](https://img.shields.io/badge/Website-0day--rubbish.com-brightgreen)](https://0day-rubbish.com)
@@ -72,21 +72,24 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Latest Batch — Batch 6 (7 advisories)
+### Latest Batch — Batch 7 (10 advisories)
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | JetBrains Datalore On-Premises | 2026.2.3 | **9.8** | Unauth RCE via InteractiveReport access-mapping flaw | [InteractiveReport READ→EXECUTE → Unauth RCE](https://0day-rubbish.com/blog/jetbrains-datalore-interactive-report-unauth-rce) |
-| 2 | Docmosis Tornado | 2.11.3 | **9.8** | Unauth Arbitrary File Write → cron (Root) | [storeTo=file: → Root RCE](https://0day-rubbish.com/blog/docmosis-tornado-unauth-storeto-file-rce) |
-| 3 | ActFax | 10.70 | **9.8** | Unauth LPD Ghostscript %pipe% (SYSTEM) | [LPD %pipe% → SYSTEM RCE](https://0day-rubbish.com/blog/actfax-unauth-lpd-gs-pipe-system-rce) |
-| 4 | RoboTask | 11.0.5.1229 | **9.8** | Unauth REST API Task Execution | [REST API Unauth → Task RCE](https://0day-rubbish.com/blog/robotask-rest-api-unauth-task-execution) |
-| 5 | Countersoft Gemini | 7.3.0 | **8.8** | Auth SQLi → xp_cmdshell (SYSTEM-able) | [SQLi → xp_cmdshell RCE](https://0day-rubbish.com/blog/countersoft-gemini-sqli-xp-cmdshell-rce) |
-| 6 | Veeam ONE Reporter | 13.1 | **8.8** | Auth Command Injection → Local Admin | [CommandExecutor → Local Admin RCE](https://0day-rubbish.com/blog/veeam-one-commandexecutor-postauth-rce) |
-| 7 | Wavestore VMS | 6.48.809 | **8.8** | Auth Cmd Injection → Root | [venusd /simple/export → Root RCE](https://0day-rubbish.com/blog/wavestore-vms-simple-export-root-rce) |
+| 1 | Software AG webMethods MSR | 10.x | **9.8** | Default-creds XSLT Xalan Java-extension RCE | [XSLT Xalan ext → RCE](https://0day-rubbish.com/blog/softwareag-webmethods-msr-xslt-xalan-extension-rce) |
+| 2 | NCache Enterprise | 5.3.6 | **9.8** | Unauth Assembly.LoadFrom RCE via Web Manager | [Assembly.LoadFrom → RCE](https://0day-rubbish.com/blog/ncache-enterprise-unauth-assembly-load-rce) |
+| 3 | Brekeke PBX | 3.19.1.8 | **9.8** | Unauth XmlTransBean Util.exec RCE | [XmlTransBean → RCE](https://0day-rubbish.com/blog/brekeke-pbx-unauth-xmltransbean-rce) |
+| 4 | CFEngine Enterprise Nova Hub | 3.27.1 | **8.8** | Auth VCS Settings Cmd Injection → Root | [gitServer → Root RCE](https://0day-rubbish.com/blog/cfengine-nova-hub-vcs-settings-root-rce) |
+| 5 | RTS Intercom VLink Virtual Matrix | 6.60 | **8.8** | Auth OpenSSL Arg Injection → SYSTEM | [openssl -engine → SYSTEM RCE](https://0day-rubbish.com/blog/rts-vlink-openssl-arginj-system-rce) |
+| 6 | Inflectra SpiraTeam | 9.3.0.0 | **8.8** | Auth SQLi → xp_cmdshell RCE | [yAxisKey SQLi → RCE](https://0day-rubbish.com/blog/spirateam-planningboard-sqli-rce) |
+| 7 | Scan2x ScanWebClient | 2.3.3.0 | **9.8** | Unauth File Upload → Webshell RCE | [FileUploadHandler → RCE](https://0day-rubbish.com/blog/scan2x-unauth-upload-rce) |
+| 8 | Microsip ASD | 2026 Eval | **9.8** | Unauth UNC Binary-Planting RCE | [gbak.exe planting → RCE](https://0day-rubbish.com/blog/microsip-asd-unc-binary-planting-rce) |
+| 9 | myDBR | 7.5.4 | **8.8** | Auth File-Editor PHP Code Injection | [fileedit_v → RCE](https://0day-rubbish.com/blog/mydbr-file-editor-rce) |
+| 10 | LogicalDOC Enterprise | 9.3 | **8.8** | Auth Automation Sandbox-Bypass RCE | [Velocity sandbox bypass → RCE](https://0day-rubbish.com/blog/logicaldoc-automation-sandbox-bypass-rce) |
 
-**Totals**: 7 advisories · 7 vendors · 4 unauthenticated · 3 authenticated (deep-chain) · 6 root/SYSTEM · all with reproducible PoC.
+**Totals**: 10 advisories · 10 vendors · 5 unauthenticated · 5 authenticated (deep-chain) · 4 system-level (root/SYSTEM/LocalSystem) · all with reproducible PoC.
 
-*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog)*
+*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog)*
 
 ---
 
@@ -94,7 +97,7 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: Batch 6 — 7 advisories (live); cumulative 58 across 6 batches
+- **Latest batch**: Batch 7 — 10 advisories (live); cumulative 68 across 7 batches
 - **Next drop**: weekly
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
