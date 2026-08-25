@@ -72,24 +72,24 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Latest Batch — Batch 7 (10 advisories)
+### Latest Batch — Batch 8 (10 advisories)
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | Software AG webMethods MSR | 10.x | **9.8** | Default-creds XSLT Xalan Java-extension RCE | [XSLT Xalan ext → RCE](https://0day-rubbish.com/blog/softwareag-webmethods-msr-xslt-xalan-extension-rce) |
-| 2 | NCache Enterprise | 5.3.6 | **9.8** | Unauth Assembly.LoadFrom RCE via Web Manager | [Assembly.LoadFrom → RCE](https://0day-rubbish.com/blog/ncache-enterprise-unauth-assembly-load-rce) |
-| 3 | Brekeke PBX | 3.19.1.8 | **9.8** | Unauth XmlTransBean Util.exec RCE | [XmlTransBean → RCE](https://0day-rubbish.com/blog/brekeke-pbx-unauth-xmltransbean-rce) |
-| 4 | CFEngine Enterprise Nova Hub | 3.27.1 | **8.8** | Auth VCS Settings Cmd Injection → Root | [gitServer → Root RCE](https://0day-rubbish.com/blog/cfengine-nova-hub-vcs-settings-root-rce) |
-| 5 | RTS Intercom VLink Virtual Matrix | 6.60 | **8.8** | Auth OpenSSL Arg Injection → SYSTEM | [openssl -engine → SYSTEM RCE](https://0day-rubbish.com/blog/rts-vlink-openssl-arginj-system-rce) |
-| 6 | Inflectra SpiraTeam | 9.3.0.0 | **8.8** | Auth SQLi → xp_cmdshell RCE | [yAxisKey SQLi → RCE](https://0day-rubbish.com/blog/spirateam-planningboard-sqli-rce) |
-| 7 | Scan2x ScanWebClient | 2.3.3.0 | **9.8** | Unauth File Upload → Webshell RCE | [FileUploadHandler → RCE](https://0day-rubbish.com/blog/scan2x-unauth-upload-rce) |
-| 8 | Microsip ASD | 2026 Eval | **9.8** | Unauth UNC Binary-Planting RCE | [gbak.exe planting → RCE](https://0day-rubbish.com/blog/microsip-asd-unc-binary-planting-rce) |
-| 9 | myDBR | 7.5.4 | **8.8** | Auth File-Editor PHP Code Injection | [fileedit_v → RCE](https://0day-rubbish.com/blog/mydbr-file-editor-rce) |
-| 10 | LogicalDOC Enterprise | 9.3 | **8.8** | Auth Automation Sandbox-Bypass RCE | [Velocity sandbox bypass → RCE](https://0day-rubbish.com/blog/logicaldoc-automation-sandbox-bypass-rce) |
+| 1 | Seeq Server | R65.2.3 | **9.8** | Unauth self-registration + Data Lab Jupyter missing-auth RCE | [Jupyter kernel → RCE](https://0day-rubbish.com/blog/seeq-server-unauth-selfreg-datalab-jupyter-rce) |
+| 2 | mySCADA PRO Runtime | 9.4.0 | **9.4** | Unauth upgrade Cmd Injection → Root | [/s.fcgi upgrade → Root RCE](https://0day-rubbish.com/blog/myscada-runtime-unauth-upgrade-cmd-injection) |
+| 3 | Biamp Devio SCR-20/25 | 2.3.1 | **9.8** | Unauth DTP Protocol Quote Injection → Root | [DTP password sink → Root RCE](https://0day-rubbish.com/blog/biamp-devio-dtp-unauth-root-rce) |
+| 4 | Leostream Broker (VULN-002) | 9.1.37.0 | **7.0** | Unauth Rogue-Agent Registration + SSRF | [Server.Register → SSRF](https://0day-rubbish.com/blog/leostream-unauth-server-register-ssrf) |
+| 5 | Raritan EMX | emx_ecx_3.6.1 | **8.8** | Auth Config Injection → port_mux Root | [proto_listener → Root RCE](https://0day-rubbish.com/blog/raritan-emx-port-mux-proto-listener-root-rce) |
+| 6 | Leostream Broker (VULN-001) | 9.1.37.0 | **9.1** | Auth SQLi → lo_export Webshell → Root | [_where SQLi → Root RCE](https://0day-rubbish.com/blog/leostream-postauth-sqli-lo-export-webshell-rce) |
+| 7 | VitalPBX | 4.5.2 | **8.8** | Auth asterisk_cli → Dialplan System() Root | [CLI → System() → Root RCE](https://0day-rubbish.com/blog/vitalpbx-authed-asterisk-cli-root-rce) |
+| 8 | Delta DIAEnergie IEMS | V1.11 | **8.8** | Auth CommandTag SQLi → VBScript RCE | [tid SQLi → VBScript RCE](https://0day-rubbish.com/blog/delta-diaenergie-iems-postauth-commandtag-sqli-rce) |
+| 9 | CacheGuard | UF-2.5.2 | **8.8** | Auth Config-Import Eval Injection RCE | [conf inject eval → RCE](https://0day-rubbish.com/blog/cacheguard-authed-conf-inject-eval-rce) |
+| 10 | Maian Gallery | 2.1 | **7.2** | Auth Admin Unrestricted Upload → Root | [upload_thumbnail → RCE](https://0day-rubbish.com/blog/maian-gallery-authed-upload-root-rce) |
 
-**Totals**: 10 advisories · 10 vendors · 5 unauthenticated · 5 authenticated (deep-chain) · 4 system-level (root/SYSTEM/LocalSystem) · all with reproducible PoC.
+**Totals**: 10 advisories · 10 vendors · 4 unauthenticated · 6 authenticated (deep-chain) · 7 system-level (root/SYSTEM) · all with reproducible PoC.
 
-*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog)*
+*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog) · [Batch #7](https://0day-rubbish.com/blog)*
 
 ---
 
@@ -97,7 +97,7 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: Batch 7 — 10 advisories (live); cumulative 68 across 7 batches
+- **Latest batch**: Batch 8 — 10 advisories (live); cumulative 78 across 8 batches
 - **Next drop**: weekly
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
