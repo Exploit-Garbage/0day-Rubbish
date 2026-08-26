@@ -1,9 +1,3 @@
-What comes next? I hope it will be social infrastructure that can impact the real physical world, such as electricity, nuclear energy, aerospace, and more.
+As the framework matures, our vulnerability production efficiency has improved dramatically — the output of the most recent week alone equals the combined total of the previous three weeks.
 
-Thanks to continuous optimization of the research pipeline, we can now produce new 0-day findings at a stable daily rate. The system keeps improving, and throughput continues to climb.
-
-In the process we have uncovered an enormous attack surface across the long tail of closed-source vendors — the segment that traditional security firms underserve. This is only the beginning.
-
-This is an ongoing series. Going forward, we plan to disclose vulnerabilities on a weekly cadence — watch the repo to catch the next drop.
-
-See you soon.
+Starting now, we publish on a fixed cadence: every Tuesday and Saturday.
