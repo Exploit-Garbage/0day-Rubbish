@@ -3,7 +3,7 @@
 > **0day vulnerabilities have become rubbish in the AI era.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Latest batch](https://img.shields.io/badge/Latest_batch-10_advisories-red)](https://0day-rubbish.com/blog)
+[![Latest batch](https://img.shields.io/badge/Latest_batch-12_advisories-red)](https://0day-rubbish.com/blog)
 [![Max CVSS](https://img.shields.io/badge/Max_CVSS-9.8-critical)](https://0day-rubbish.com/blog)
 [![PoC](https://img.shields.io/badge/Every_advisory-working_PoC-blue)](https://0day-rubbish.com/blog)
 [![Website](https://img.shields.io/badge/Website-0day--rubbish.com-brightgreen)](https://0day-rubbish.com)
@@ -72,24 +72,26 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Latest Batch — Batch 8 (10 advisories)
+### Latest Batch — Batch 9 (12 advisories)
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | Seeq Server | R65.2.3 | **9.8** | Unauth self-registration + Data Lab Jupyter missing-auth RCE | [Jupyter kernel → RCE](https://0day-rubbish.com/blog/seeq-server-unauth-selfreg-datalab-jupyter-rce) |
-| 2 | mySCADA PRO Runtime | 9.4.0 | **9.4** | Unauth upgrade Cmd Injection → Root | [/s.fcgi upgrade → Root RCE](https://0day-rubbish.com/blog/myscada-runtime-unauth-upgrade-cmd-injection) |
-| 3 | Biamp Devio SCR-20/25 | 2.3.1 | **9.8** | Unauth DTP Protocol Quote Injection → Root | [DTP password sink → Root RCE](https://0day-rubbish.com/blog/biamp-devio-dtp-unauth-root-rce) |
-| 4 | Leostream Broker (VULN-002) | 9.1.37.0 | **7.0** | Unauth Rogue-Agent Registration + SSRF | [Server.Register → SSRF](https://0day-rubbish.com/blog/leostream-unauth-server-register-ssrf) |
-| 5 | Raritan EMX | emx_ecx_3.6.1 | **8.8** | Auth Config Injection → port_mux Root | [proto_listener → Root RCE](https://0day-rubbish.com/blog/raritan-emx-port-mux-proto-listener-root-rce) |
-| 6 | Leostream Broker (VULN-001) | 9.1.37.0 | **9.1** | Auth SQLi → lo_export Webshell → Root | [_where SQLi → Root RCE](https://0day-rubbish.com/blog/leostream-postauth-sqli-lo-export-webshell-rce) |
-| 7 | VitalPBX | 4.5.2 | **8.8** | Auth asterisk_cli → Dialplan System() Root | [CLI → System() → Root RCE](https://0day-rubbish.com/blog/vitalpbx-authed-asterisk-cli-root-rce) |
-| 8 | Delta DIAEnergie IEMS | V1.11 | **8.8** | Auth CommandTag SQLi → VBScript RCE | [tid SQLi → VBScript RCE](https://0day-rubbish.com/blog/delta-diaenergie-iems-postauth-commandtag-sqli-rce) |
-| 9 | CacheGuard | UF-2.5.2 | **8.8** | Auth Config-Import Eval Injection RCE | [conf inject eval → RCE](https://0day-rubbish.com/blog/cacheguard-authed-conf-inject-eval-rce) |
-| 10 | Maian Gallery | 2.1 | **7.2** | Auth Admin Unrestricted Upload → Root | [upload_thumbnail → RCE](https://0day-rubbish.com/blog/maian-gallery-authed-upload-root-rce) |
+| 1 | NoMachine Terminal Server (VULN-001) | 10.0.57 | **9.8** | Pre-auth heap corruption (CWE-787→416), RCE-capable | [parsePOST heap → corruption](https://0day-rubbish.com/blog/nomachine-terminal-server-preauth-heap-corruption) |
+| 2 | NoMachine Terminal Server (VULN-002) | 10.0.57 | **9.8** | Pre-auth stack overflow, return-address control | [parsePOST sprintf → RIP control](https://0day-rubbish.com/blog/nomachine-terminal-server-preauth-stack-overflow) |
+| 3 | StreamSets DataCollector | 6.4.1 | **9.8** | Default creds + Shell Executor → Root | [ShellDExecutor → Root RCE](https://0day-rubbish.com/blog/streamsets-datacollector-default-creds-shell-executor-root-rce) |
+| 4 | Akana API Platform | 8.4.29 | **9.8** | Unauth path-normalization bypass → ScriptEngine RCE | [admin/../ext → engine.eval RCE](https://0day-rubbish.com/blog/akana-api-platform-path-normalization-unauth-rce) |
+| 5 | Puppet Enterprise | 2025.10.0 | **8.8** | Auth keytool shell injection → Root (CVE-2025-5459 bypass) | [java_keystore_passwd → Root RCE](https://0day-rubbish.com/blog/puppet-enterprise-keytool-injection-root-rce) |
+| 6 | Minuteman UPS NMC | 1.60.3 | **9.8** | Unauth system_param.csp Cmd Injection → Root | [WAN config → Root RCE](https://0day-rubbish.com/blog/minuteman-ups-nmc-system-param-unauth-command-injection) |
+| 7 | Lantronix EDS3000PR (VULN-001) | 3.2.0.0R2 | **8.8** | Auth FsUnmount Cmd Injection → Root | [FsUnmount path → Root RCE](https://0day-rubbish.com/blog/lantronix-eds3000pr-fsunmount-command-injection) |
+| 8 | Lantronix EDS3000PR (VULN-002) | 3.2.0.0R2 | **8.8** | Auth SSL `-passin pass:%s` Cmd Injection → Root | [keytool pass → Root RCE](https://0day-rubbish.com/blog/lantronix-eds3000pr-passin-pass-command-injection) |
+| 9 | GeoVision GV-TBL4700 | V1.06 | **8.8** | Auth SNMPv3 net-snmp-config Cmd Injection → Root | [szAuthKey → Root RCE](https://0day-rubbish.com/blog/geovision-gv-tbl4700-snmpv3-command-injection) |
+| 10 | DrayTek Vigor 2960 | v1.5.1.6 | **8.8** | Auth uploadlangs Cmd Injection → Root | [cgiEscape gap → Root RCE](https://0day-rubbish.com/blog/draytek-vigor2960-uploadlangs-command-injection) |
+| 11 | Codoforum | 5.4.1 | **7.2** | Auth cat_img polyglot upload → www-data | [polyglot upload → RCE](https://0day-rubbish.com/blog/codoforum-admin-cat-img-polyglot-upload-rce) |
+| 12 | ZesleCP | 3.1.21 | **8.8** | Auth arbitrary file write → cron → Root | [save-file → cron Root RCE](https://0day-rubbish.com/blog/zeslecp-admin-file-write-cron-root-rce) |
 
-**Totals**: 10 advisories · 10 vendors · 4 unauthenticated · 6 authenticated (deep-chain) · 7 system-level (root/SYSTEM) · all with reproducible PoC.
+**Totals**: 12 advisories · 10 vendors · 4 unauthenticated · 8 authenticated (deep-chain) · 10 system-level (root/SYSTEM) · all with reproducible PoC.
 
-*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog) · [Batch #7](https://0day-rubbish.com/blog)*
+*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog) · [Batch #7](https://0day-rubbish.com/blog) · [Batch #8](https://0day-rubbish.com/blog)*
 
 ---
 
@@ -97,7 +99,7 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: Batch 8 — 10 advisories (live); cumulative 78 across 8 batches
+- **Latest batch**: Batch 9 — 12 advisories (draft); cumulative 90 across 9 batches
 - **Next drop**: weekly
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
