@@ -2,7 +2,7 @@
 
 ## Summary
 
-Royal Server 5.04.50529.0 (Royal Apps GmbH, Germany; .NET 10 / ASP.NET Core, Windows MSI) registers the Windows service `RoyalServer` running as **LocalSystem**, listening on 54899/TCP HTTPS. The Script module has two execution paths in its sink (`oclor.cs`): the remote path `fmgvg` sets Domain/UserName/Password on `ProcessStartInfo` before `Process.Start`, but the local path **`fmgvf` — selected when a request carries no destination credentials, with empty destinations auto-filled to `localhost` — spawns its child process with no credential override**, so the child inherits the service process token. The WorkerAccount impersonation wrapper (`ufwmz.ExecuteAs`, `LogonType.NewCredentials` = 9) only substitutes outbound network credentials and never changes the local execution identity.
+Royal Server 5.04.50529.0 (Royal Apps GmbH, Austria; .NET 10 / ASP.NET Core, Windows MSI) registers the Windows service `RoyalServer` running as **LocalSystem**, listening on 54899/TCP HTTPS. The Script module has two execution paths in its sink (`oclor.cs`): the remote path `fmgvg` sets Domain/UserName/Password on `ProcessStartInfo` before `Process.Start`, but the local path **`fmgvf` — selected when a request carries no destination credentials, with empty destinations auto-filled to `localhost` — spawns its child process with no credential override**, so the child inherits the service process token. The WorkerAccount impersonation wrapper (`ufwmz.ExecuteAs`, `LogonType.NewCredentials` = 9) only substitutes outbound network credentials and never changes the local execution identity.
 
 An authenticated member of the "Royal Server Users" role (the product's design-intended module-access role, granted by an administrator) submits a script at `POST /managementendpoint` with empty destination fields; when WorkerAccount is configured and psexec.exe is present (hardcoded call at `oclor.cs:43`), the script executes as **LocalSystem** on the gateway host. Verified end-to-end: HTTP 200 + PsExec banner in the response, marker file `nt authority\system` (hex-confirmed), service StartName=LocalSystem. Conditional, honestly-scoped privesc — the role grant itself is by-design access, the defect is the execution identity (CWE-250/CWE-269, explicitly not CWE-862).
 
@@ -16,7 +16,7 @@ An authenticated member of the "Royal Server Users" role (the product's design-i
 
 - **Product**: Royal Server (enterprise remote-management gateway, Windows)
 - **Versions**: 5.04.50529.0 verified; any build where `fmgvf` spawns child processes without credential override is affected
-- **Vendor**: Royal Apps GmbH (Germany)
+- **Vendor**: Royal Apps GmbH (Austria)
 - **Preconditions** (all three): authenticated user in "Royal Server Users" role (granted by an admin); WorkerAccountSettings non-empty; psexec.exe available on the host
 
 ## Impact

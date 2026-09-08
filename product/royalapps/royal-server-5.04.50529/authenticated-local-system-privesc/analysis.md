@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-Royal Server 5.04.50529.0 is an enterprise remote-management gateway by Royal Apps GmbH (Germany), built on .NET 10 / ASP.NET Core, installed via Windows MSI. It registers the Windows service `RoyalServer` (Automatic startup, running as **LocalSystem**), listening on 54899/TCP over HTTPS (self-signed certificate). Royal TS and other Royal clients submit management requests — the Script, Processes and Management modules — and the server executes scripts and processes on destination hosts on the client's behalf. This advisory targets the Script module's local execution path.
+Royal Server 5.04.50529.0 is an enterprise remote-management gateway by Royal Apps GmbH (Austria), built on .NET 10 / ASP.NET Core, installed via Windows MSI. It registers the Windows service `RoyalServer` (Automatic startup, running as **LocalSystem**), listening on 54899/TCP over HTTPS (self-signed certificate). Royal TS and other Royal clients submit management requests — the Script, Processes and Management modules — and the server executes scripts and processes on destination hosts on the client's behalf. This advisory targets the Script module's local execution path.
 
 **Honest conditional framing.** This is a conditional, authenticated privilege-escalation flaw — not an unauthenticated flaw and not a default-credential flaw. An authenticated non-administrator Windows user, whom an administrator has granted the "Royal Server Users" role, submits a script at the management endpoint. When all three preconditions hold, the script executes with the Royal Server service identity — **LocalSystem** — locally on the Royal Server host, instead of in the configured WorkerAccount context:
 
