@@ -72,22 +72,26 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Latest Batch — Batch 10 (8 advisories)
+### Latest Batch — Batch 11 (8 advisories)
+
+*Management and control planes running as root / SYSTEM / Administrator.*
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | DBxtra .NET | 13.1.1.0 | **9.8** | Unauth SOAP (346 anonymous WebMethods) → SSRF + xp_cmdshell → SYSTEM | [DataGrid.aspx → SYSTEM RCE](https://0day-rubbish.com/blog/dbxtra-unauth-soap-xp-cmdshell-rce) |
-| 2 | Accurate Online Private Cloud | on-prem (current) | **9.8** | Unauth Hessian deserialization → JNDI → Administrator RCE | [/accurate/remote → JNDI RCE](https://0day-rubbish.com/blog/accurate-online-private-cloud-unauth-hessian-jndi-rce) |
-| 3 | Jitterbit Agent | 12.8.1.6 | **9.8** | Unauth SOAP JdbcEngine + hardcoded PG superuser → COPY TO PROGRAM RCE | [dbExecute → COPY TO PROGRAM RCE](https://0day-rubbish.com/blog/jitterbit-agent-unauth-soap-copy-to-program-rce) |
-| 4 | SmarterMail | 100.0.9693 | **7.2** | SysAdmin AV commandLine → SMTP trigger → SYSTEM privesc | [antivirus commandLine → SYSTEM RCE](https://0day-rubbish.com/blog/smartermail-antivirus-command-line-system-rce) |
-| 5 | OSNexus QuantaStor | 6.8.3.018 | **8.8** | Auth alertConfigSet smtpPassword command injection → Root | [smtpPassword → Root RCE](https://0day-rubbish.com/blog/quantastor-alertconfigset-smtp-password-command-injection) |
-| 6 | ITRS OP5 Monitor | 9.20 | **8.8** | CVE-2025-34115 OPT-IN patch bypass → command injection RCE | [contains_dangerous_characters gap → RCE](https://0day-rubbish.com/blog/op5-monitor-cve-2025-34115-patch-bypass-rce) |
-| 7 | core-admin | 1.0.164 | **8.8** | Auth escape_param shell injection → Root (systemic, 32 sinks) | [escape_param → Root RCE](https://0day-rubbish.com/blog/core-admin-escape-param-command-injection-rce) |
-| 8 | Royal Server | 5.04.50529 | **7.2** | Authenticated local privilege escalation to LocalSystem | [fmgvf credential gap → LocalSystem](https://0day-rubbish.com/blog/royal-server-authenticated-local-system-privesc) |
+| 1 | TigerGraph Community Edition | 4.2.4 | **9.8** | Default creds + GSQL file write + unauth REST++ trigger → SSH RCE (service user) | [PRINT TO_CSV → authorized_keys → RCE](https://0day-rubbish.com/blog/tigergraph-default-creds-file-write-ssh-rce) |
+| 2 | Devolutions Server (DVLS) | 2026.2.14.0 | **9.1** | Auth PAM entitlement-gate bypass → test-script PowerShell → SYSTEM | [hard-coded GUID → WinRM → SYSTEM](https://0day-rubbish.com/blog/devolutions-server-pam-license-bypass-system-rce) |
+| 3 | Ecava IntegraXor IGX (ICS) | 16.0.701.10 | **9.8** | Unauth FileUpload → dxmanager `cmd.exe /C` sink → Administrator | [/FileUpload → CMDEXT sink → RCE](https://0day-rubbish.com/blog/ecava-integraxor-unauth-fileupload-dxmanager-rce) |
+| 4 | LCDS Laquis SCADA (ICS) | as tested \* | **9.8** | Unauth `/uploade.html` write → `CMDEXT*.DLL` plugin load in `mili.exe` | [uploade → DLL autoload → RCE](https://0day-rubbish.com/blog/lcds-laquis-scada-unauth-uploade-cmdext-dll-rce) |
+| 5 | CaptureBites MetaServer | as tested \* | **9.8** | Unauth WCF SOAP `RunPrograms` → `Process.Start` → SYSTEM | [4 anonymous SOAP ops → SYSTEM](https://0day-rubbish.com/blog/capturebites-metaserver-unauth-runprogram-system-rce) |
+| 6 | Accusoft / Apryse PrizmDoc for Java | 5.22.1 | **9.8** | Unauth `uploadDocument` → JSP webshell in webapp root → root | [AjaxServlet → webshell → root](https://0day-rubbish.com/blog/accusoft-prizmdoc-unauth-uploaddocument-jsp-webshell-rce) |
+| 7 | Teltonika RutOS (RUT2XX / RUT200, RUT9XX) | 00.07.06.21 | **8.8** | Auth `ipsec.lua` → `logread` command injection → root, output reflected | [instances_status sid → root](https://0day-rubbish.com/blog/teltonika-rutos-ipsec-status-logread-command-injection) |
+| 8 | Opengear NGCS console manager | 25.11.8 | **8.8** | Auth PDU `name` → `ogpower` command injection → root (sanitizer present but uncalled) | [PDU name → shlex_quote gap → root](https://0day-rubbish.com/blog/opengear-ngcs-pdu-name-command-injection-root-rce) |
 
-**Totals**: 8 advisories · 8 vendors · 3 unauthenticated · 5 authenticated (deep-chain) · 6 system-level (root/SYSTEM/LocalSystem/Administrator) · all with reproducible PoC.
+\* The exact marketed version is not documented in our research record for these two; the advisories state that explicitly rather than asserting a version number.
 
-*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog) · [Batch #7](https://0day-rubbish.com/blog) · [Batch #8](https://0day-rubbish.com/blog) · [Batch #9](https://0day-rubbish.com/blog)*
+**Totals**: 8 advisories · 8 vendors · 5 unauthenticated · 3 authenticated (deep-chain) · 6 reaching root/SYSTEM/Administrator plus 2 application-context executions (a graph-database service user; the SCADA HMI process that also hosts Modbus TCP) · 4 ICS/OT-class products · all with reproducible PoC.
+
+*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog) · [Batch #7](https://0day-rubbish.com/blog) · [Batch #8](https://0day-rubbish.com/blog) · [Batch #9](https://0day-rubbish.com/blog) · [Batch #10](https://0day-rubbish.com/blog)*
 
 ---
 
@@ -95,7 +99,7 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: Batch 10 — 8 advisories (draft); cumulative 98 across 10 batches
+- **Latest batch**: Batch 11 — 8 advisories (draft); cumulative 106 across 11 batches
 - **Next drop**: weekly
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
