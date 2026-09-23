@@ -1,0 +1,51 @@
+# Cambium cnMatrix EX3024F — SSL CSR Command Injection (Root RCE)
+
+Advisory: https://0day-rubbish.com/blog/cambium-cnmatrix-ssl-csr-command-injection
+Repository: https://github.com/Exploit-Garbage/0day-Rubbish
+Contact: disclosure@0day-rubbish.com
+
+## Summary
+
+The SSL digital certificate page of the Cambium cnMatrix EX3024F managed switch, firmware 6.2.1-r4, contains a command injection that lets an authenticated administrator execute arbitrary operating-system commands as `uid=0`. The `COMMON_NAME` form field submitted to `POST /iss/specific/ssl_digitalcert.html` is extracted by `HttpGetValuebyName`, percent-decoded by `issDecodeSpecialChar`, copied with `strncpy(buf, COMMON_NAME, 100)`, and then interpolated unfiltered into the double-quoted `-subj "%s"` argument of an `openssl req` command string that the management daemon `ISS.exe` hands to `system()`. Five functions stand between the HTTP parser and the sink and none of them validate the data; each only reformats or forwards it, and the `/CN=` prefix added on the way is not a filter. A subject of `";id;echo "` closes the quote, injects a semicolon-separated statement and absorbs the remaining format tail into a harmless `echo`. The daemon runs as root, so the injected command does too, and the 256-byte subject buffer against a 1 KB command buffer leaves room for multi-statement payloads such as a reverse shell.
+
+The finding is post-authentication: the page is gated by a server-side session table plus an administrator privilege check that is on by default. A structured exhaustion review of the unauthenticated attack surface across five dimensions — the complete page table with each page's authorization predicate, pre-authentication HTTP parsing, non-web services and init daemons in the root filesystem, CLI-backend reachability from unauthenticated contexts, and memory corruption on the authentication path — found no unauthenticated route to command execution, and two independent adversarial passes failed to refute that conclusion. Four authentication-bypass hypotheses were tested and ruled out, among them the prior cnPilot-line technique re-tested against this build.
+
+Confirmation used an extracted firmware image under `qemu-aarch64-static` user-mode emulation, because the daemon cannot complete initialisation without the Marvell switch ASIC driver and never binds an HTTP port in emulation. The real shipped sink function was invoked directly under debugger control with the payload an HTTP POST would deliver; it returned 0 and wrote a 36-byte root-owned marker containing `uid=0(root) gid=0(root)`. End-to-end HTTP exploitation against a device was not performed and no physical hardware was used.
+
+## CVSS Score
+
+The research record carried a base score together with a vector, `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H`. This advisory does not adopt that vector: each reading below is computed with the CVSS 3.1 base metric algorithm from the documented facts, and the recorded number is then reconciled against the result. Two readings are carried by defenders: the vendor-agnostic baseline reflecting the verified authentication requirement, and a deployment-conditional upper bound.
+
+- **Score**: 7.2 High — primary baseline; a valid administrative session is required
+- **Vector**: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H
+- **CWE**: CWE-78 (OS command injection, primary), CWE-20 (improper input validation — percent-decoding is the only processing applied); CWE-250 / CWE-269 bear on remediation priority rather than on the defect itself, since the daemon executing at uid 0 is what turns an injection into full device compromise
+- **Class**: post-authentication, administrator to root on the switch management daemon
+- **9.8 Critical** — `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H` — deployment-conditional upper bound where an installation retains a default, weak or publicly known administrator password, a common condition for network switches; the privilege prerequisite collapses in practice while the technical chain is unchanged
+- **8.8 High — rejected**: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H` is the vector the research record itself pairs with its recorded 8.8, and it differs from the faithful one solely in Privileges Required. Since the analysis documents an administrator-only check rather than any-low-privilege-user access, `PR:H` is the faithful metric, and the recorded vector understates the privilege the chain actually demands by one step, which is why the recorded score does not hold.
+- **9.1 High — rejected**: `CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H` would be the result of setting Scope to Changed, which is inappropriate here because the compromised operating system and the vulnerable daemon sit inside one authorization domain — the daemon is already root over that operating system
+
+## Affected Products
+
+- **Vendor**: Cambium Networks; **product**: cnMatrix EX3024F managed switch
+- **Firmware verified**: 6.2.1-r4. Only this model and this firmware revision were executed in this research; other models and other firmware revisions were not tested, and nothing beyond this build is claimed
+- **Affected component**: the 93 MB stripped ELF binary for ARM aarch64 (Marvell switch platform, Senao OEM) that implements the entire web management interface, fronted by `lighttpd` and shipped in a `cpio`-packed initramfs that also contains a `busybox` binary. That this `busybox` supplies the `/bin/sh` which `system()` invokes is an inference from the emulation setup, where the loader prefix resolves the child shell for the emulated process — not a property established from the device itself
+- **Any broader applicability is inference, not verification.** The SSL CSR code lives inside a vendor web framework binary whose structure — the `Ar`/`Cli`/`IssProcess` naming scheme and the shared `system()` wrappers — indicates a common framework across the product family, so other cnMatrix models and other firmware revisions plausibly carry the same `SslGenCertRequest` code. No other model image was extracted, no other firmware revision was disassembled and no other build was executed; defenders should treat anything beyond EX3024F firmware 6.2.1-r4 as unconfirmed and requiring its own validation
+- **Verification boundary**: static proof of the five-handler chain end to end by decompilation and cross-reference; dynamic proof of the sink by direct invocation of the shipped function under emulation. An observed network request was not part of the evidence
+- **Identifier status**: the cnMatrix product line had no published identifier records at the time of research. Cambium does have prior public command-injection, code-injection and authentication-bypass advisories on the sibling ePMP and cnPilot lines, all on different code paths (diagnostic ping/traceroute handling and authentication); this finding is SSL certificate signing-request generation in the cnMatrix management daemon, reached by independent static analysis
+
+## Impact
+
+- **Root command execution on a managed switch**: full compromise of the device's configuration, arbitrary rewriting of the running and persisted configuration, installation of a persistent backdoor that survives reboot, use of the switch as a pivot into adjacent network segments, and live manipulation, redirection or denial of the traffic it carries
+- For an aggregation or access switch in an operational network this is complete compromise of a forwarding-plane device, not merely of a management plane
+- **Confidentiality / Integrity / Availability**: High / High / High — a root shell reads all configuration and keys, rewrites configuration and installs persistent code, and can halt forwarding, drop configuration or reboot the switch
+- **Practical severity depends on the deployed administrative password.** The shipped image contains no hardcoded credential shortcut — the default-credentials structure is zero-initialized in the released binary — but switches are routinely deployed with unchanged or weak administrative passwords and the management interface is frequently exposed on a production or management VLAN; where that is the case, the authentication prerequisite is a formality. The proof-of-concept script's built-in credential defaults are argument conveniences for the tester and are not evidence of any shipped credential
+- **Stealth**: the `2> /dev/null` tail in the format string discards `openssl` error output from the now-malformed first statement, which reduces the operational noise of an attack although it is not what enables it
+
+## Mitigation
+
+1. Do not build shell command strings from user input — invoke `openssl` with `execve()` / `posix_spawn()` and an argument vector so the subject is passed as one opaque argument rather than as shell text, removing the class rather than the instance
+2. If `system()` must be retained, validate the subject against a strict allowlist: after normalization an X.509 distinguished-name common name needs only alphanumerics, spaces and `. , - _ ' ( ) / = : @`, so reject `"`, `;`, `|`, `` ` ``, `$`, `(`, `)`, `<`, `>`, newline and backslash
+3. Apply the same validation before writing the value into any persisted configuration, so a validated value cannot later be re-read and re-interpolated into a different command string elsewhere
+4. Audit every caller of the `system()` and `popen()` wrappers identified by the `Failed: system command %s` and `Failed: popen for cmd %s` format strings; the same interpolation pattern is likely present on other diagnostic and certificate-related pages
+5. Drop privileges: a daemon that only shells out to `openssl` for certificate operations does not need to handle requests as root, and a least-privilege split converts full device compromise into a bounded failure
+6. Treat percent-decoding as sanitisation nowhere, and re-validate after decoding. Operators, until a fixed build exists: restrict the management interface to a dedicated management network or out-of-band port, place it behind an authenticating reverse proxy or VPN, enforce a strong unique administrative password, disable unused default accounts, and monitor CSR generation requests whose `COMMON_NAME` contains quote or command-separator characters
