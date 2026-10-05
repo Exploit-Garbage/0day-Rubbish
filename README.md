@@ -3,7 +3,7 @@
 > **0day vulnerabilities have become rubbish in the AI era.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Latest batch](https://img.shields.io/badge/Latest_batch-8_advisories-red)](https://0day-rubbish.com/blog)
+[![Latest batch](https://img.shields.io/badge/Latest_batch-7_advisories-red)](https://0day-rubbish.com/blog)
 [![Max CVSS](https://img.shields.io/badge/Max_CVSS-9.8-critical)](https://0day-rubbish.com/blog)
 [![PoC](https://img.shields.io/badge/Every_advisory-working_PoC-blue)](https://0day-rubbish.com/blog)
 [![Website](https://img.shields.io/badge/Website-0day--rubbish.com-brightgreen)](https://0day-rubbish.com)
@@ -72,43 +72,41 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Latest Batch — Batch 12 (8 advisories)
+### Latest Batch — Batch 13 (7 advisories)
 
-*Management planes, device controllers and data-integration runtimes — where the authenticated administrator turns out to be one configuration write away from root.*
+*Command execution reached from inside the product's own management surface — an unauthenticated report-upload page, a data-pipeline stage that compiles Scala, an energy gateway's event engine, a package-manager property, a media CGI, a banner uploader and a log viewer.*
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | Lightstreamer Server (ENTERPRISE) | 7.4.8 build 3506 | **8.1** \* | Unauthenticated JMX diagnostic command → `jvmtiAgentLoad` → native code execution as the service user (root in the verified deployment) | [jvmtiAgentLoad → OS command execution](https://0day-rubbish.com/blog/lightstreamer-unauth-jmx-jvmti-agentload-rce) |
-| 2 | Lightstreamer Server | 7.4.8 build 3506 | **9.8** \* | Shipped placeholder JMX/RMI credentials → `MLet` remote class loading → root | [placeholder creds → MLet → root](https://0day-rubbish.com/blog/lightstreamer-default-creds-jmx-rmi-mlet-rce) |
-| 3 | Logo Netsis NetOpenX REST | 2.0.6.9 | **9.8** \* | Unauthenticated SQL injection in the OAuth token endpoint → `xp_cmdshell` → SYSTEM | [OAuth endpoint SQLi → xp_cmdshell → SYSTEM](https://0day-rubbish.com/blog/netsis-netopenx-unauth-sqli-xp-cmdshell-rce) |
-| 4 | Safe Software FME Flow | 2026.2 build 26333 | **8.8** \* | Authenticated Zip-Slip in `StoreManager.extract` → arbitrary file write → JSP compiled and run under the Tomcat service account | [zip entry name → arbitrary write → code execution](https://0day-rubbish.com/blog/fme-flow-zipslip-arbitrary-file-write-rce) |
-| 5 | MultiTech Conduit AEP | 6.3.6 | **7.2** | Authenticated `import_config` uploaded-filename command injection → root | [filename → `MTS::System::cmd` → root](https://0day-rubbish.com/blog/multitech-conduit-import-config-command-injection) |
-| 6 | Lantronix SGX5150 | 9.13.0.0R7 | **7.2** \* | Authenticated `FsBrowseClean` command injection → root | [FsBrowseClean → newline vector → root](https://0day-rubbish.com/blog/lantronix-sgx5150-fsbrowseclean-command-injection) |
-| 7 | Cambium cnMatrix EX3024F | 6.2.1-r4 | **7.2** \* | Authenticated SSL certificate CSR command injection (`COMMON_NAME`) → `system()` → root | [CSR COMMON_NAME → openssl req → root](https://0day-rubbish.com/blog/cambium-cnmatrix-ssl-csr-command-injection) |
-| 8 | Server Technology PRO3X rack PDU | `spdu-pro3x-030600` build 46640 | **7.2** \* | Authenticated listener `program` override in `port_mux` → `execv` as root | [listener program → execv → root](https://0day-rubbish.com/blog/servertech-pro3x-port-mux-command-injection) |
+| 1 | Advantech WebAccess Node (SCADA/HMI) | 9.2.3 | **9.8** \* | Unauthenticated `CrystalRpt.aspx` file upload with path traversal → code execution in the IIS worker process | [CrystalRpt.aspx → webshell → code execution](https://0day-rubbish.com/blog/advantech-webaccess-crystalrpt-unauth-file-upload-rce) |
+| 2 | StreamSets Transformer | 3.17.0 | **8.1** \* | `ScalaDTransform` code field compiled and run by the full Scala compiler in the service JVM, no sandbox → container root | [Scala stage → compiler → root](https://0day-rubbish.com/blog/streamsets-transformer-auth-none-scaladtransform-code-execution) |
+| 3 | Circutor LineEds (industrial energy gateway) | 24.11.14-r0 | **9.8** \* | Unauthenticated `events.xml` write with a `shellExecute` action plus a restart trigger → `system()` in `pwrstudio` | [events.xml shellExecute → system()](https://0day-rubbish.com/blog/circutor-lineeds-pwrstudio-shellexecute-unauth-command-injection) |
+| 4 | IPConfigure Orchid VMS | 26.3.0 | **7.2** \* | Authenticated `gpg_key` server property → DNF `rpm --import {}` → uid 0 | [server property → rpm --import → root](https://0day-rubbish.com/blog/ipconfigure-orchid-vms-dnf-gpg-key-command-injection) |
+| 5 | Asustor ADM (AS602T) | 3.5.9.RWM1 | **8.8** \* | Authenticated `music.cgi` `act=live` → `As_System` = `system()` | [music.cgi act=live → As_System](https://0day-rubbish.com/blog/asustor-adm-music-cgi-live-command-injection) |
+| 6 | Maian Cart | 3.8 | **7.2** \* | Authenticated `addBanners` upload with no extension allow-list → webshell in a served directory | [banner upload → PHP webshell](https://0day-rubbish.com/blog/maian-cart-addbanners-upload-extension-webshell-rce) |
+| 7 | RCDevs WebADM (Freeware) | 2.4.14 | **7.2** | Authenticated `logfile_viewer.php` `sid` → `popen`, executing as `webadm` (uid 999) on an IAM/MFA platform | [sid → popen → webadm](https://0day-rubbish.com/blog/rcdevs-webadm-logfile-viewer-sid-command-injection) |
 
-\* More than one reading is published. Each of these advisories carries every reading alongside its own full vector, and labels what was verified versus what is conditional or assumed:
->
-> - **Finding 1** — primary **8.1** with `AC:H`, because the endpoint only names a path for the native library; the agent file must already be reachable there by some other means. **9.8** with `AC:L` is the reading where that precondition is already satisfied, and the advisory states that in our verification the file was placed beforehand over an authenticated root session.
-> - **Findings 6, 7, 8** — primary **7.2** at `PR:H`, a genuine administrator session being required. Findings 6 and 8 additionally carry **9.8** as the reading where the factory credential is unchanged: for finding 8 that credential is proven from extracted firmware artifacts, while for finding 6 it is a research-note assertion whose derivation was never reversed, and finding 7 carries **9.8** only as an operational-posture figure rather than as a scored reading.
-> - **Finding 2** — **9.8** primary, because the placeholder credential ships inside the distribution archive and nothing randomizes it; **7.2** is the reading where an operator has rotated it.
-> - **Finding 3** — **9.8** is the recorded figure and applies where the service's SQL login holds sysadmin; the advisory also publishes a **7.5** lower bound for a login that does not, and an **8.1** `AC:H` alternative, and declines to restate the research notes' unsourced 9.1 estimate as verified.
-> - **Finding 4** — **8.8** for any authenticated principal, including the built-in low-privilege roles; **9.8** applies only under an explicitly non-shipped-default configuration.
->
-> No advisory prints a score that its own vector does not compute to.
+\* More than one reading is published. Each of these advisories carries every reading alongside its own full vector, and labels what was verified versus what is conditional, inferred or rejected:
 
-**Totals**: 8 advisories · 7 vendors · 3 in the unauthenticated class (2 pure pre-authentication, 1 shipped-placeholder credential) · 5 authenticated deep chains · every finding reaches root or SYSTEM in the execution context its own advisory documents (6 root, 2 SYSTEM — one of them through a Tomcat service running as LocalSystem) · 4 device-class products (industrial IoT gateway, serial device server, enterprise switch, rack PDU) · all with reproducible PoC.
+> - **Finding 1** — primary **9.8** at `PR:N`, resting on the artifact-proven absence of any application-level authorization in the page plus the structural argument that the product's own login page must be anonymous. The advisory states plainly that no extracted installer artifact proves IIS anonymous authentication is enabled for that application path specifically, and publishes **8.8** at `PR:L` as the reading where it is not.
+> - **Finding 2** — primary **8.1** at `AC:H`, because the shipped configuration file sets `http.authentication=aster`; anonymous access requires the `none` mode, which is a documented operator-selectable value and a code-level fallback rather than the shipped default. **9.8** at `AC:L` is published for deployments where that mode is in effect.
+> - **Finding 3** — primary **9.8** at `PR:N` grounded on a census of the authorization gate's 197 call sites, neither of which is on the vulnerable path. The record's "security is disabled by default" assertion is published as unverified rather than as an artifact-proven factory setting, and **8.8** at `PR:L` is carried for the case where the gate applies.
+> - **Finding 4** — primary **7.2** at `PR:H`: the shipped OpenAPI specification grants the `config` scope required by this endpoint to the Administrator role only. **9.8** is the reading where the installer's default administrator password is unchanged, which the packaged debconf template does evidence. The research record's 8.8 at `PR:L` is disclosed and explained as not adopted.
+> - **Finding 5** — primary **8.8** at `PR:L`, the only session validity check standing between the caller and the handler, with no role or privilege attribute consulted on that path. **7.2** at `PR:H` is published as a conditional, untested reading.
+> - **Finding 6** — primary **7.2** at `PR:H`, administrator session required. **9.8** at `PR:N` is labelled as this advisory's own construction, conditional on deployment credentials that were never shown to be guessable.
+> - **Finding 7** — **7.2** is the only score published. The research record carried 8.8 against the same `PR:H` vector, which does not compute to 8.8; that is disclosed, and `PR:L`/8.8 is left as an open question for the vendor rather than adopted.
 
-**How each finding was verified** — stated here because the eight differ, and because an advisory that blurs this is worth less than one that doesn't:
+**Totals**: 7 advisories · 7 vendors · 3 in the unauthenticated class · 4 authenticated deep chains · every finding reaches operating-system command execution inside the product's own service or handler process. Executing identity is reported as measured where it was measured — uid 0 in a container (findings 2 and 4), `webadm` uid 999 (finding 7), uid 0 in a loopback lab process (finding 6) — and as a labelled inference where the device-side or shipped-pool identity was not measured (findings 1, 3, 5). No advisory prints a score its own vector does not compute to.
 
-- **2 reproduced against a live running instance of the shipped product** (both Lightstreamer findings) — the product was unpacked from its own distribution archive and started on the research host, reached over loopback.
-- **5 reproduced against instrumented reconstructions or emulated firmware of the product's own components, with no physical device** — an IL-patched build of the shipped assemblies hosted in a loopback console process (Netsis), and `qemu`-emulated images or root filesystems in which the product's own daemons were run for real (MultiTech, Lantronix, Cambium, Server Technology).
-- **1 verified at component level because a full product installation was not deployed** (FME Flow): the traversal and write primitive were proven against the shipped code path, and the full end-to-end HTTP delivery chain rests on decompiled source rather than a live run.
+**How each finding was verified** — stated here because the seven differ, and because an advisory that blurs this is worth less than one that doesn't:
 
-In the device-class findings the vulnerable sink was proven under emulation and the surrounding request chain was verified component by component, not end to end on hardware. Each advisory says which of these applies in its own section 9, and none of them presents an emulated or reconstructed run as an exploit against a live deployed device.
+- **4 driven over HTTP against a real running instance of the product** — the official container image (finding 2), a real `dpkg -i` installation of the vendor package inside a Linux container (finding 4), a genuine installation served by the PHP built-in server (finding 6), and the vendor's Docker image over TLS (finding 7). Each of these reached the service from the same host over a loopback-bound port; none was driven from a separate network host.
+- **1 against shipped components deployed into a real IIS host over loopback** (finding 1): the vulnerable code ran unmodified, but a stock installation was not achieved, so the public URL prefix is derived from a literal inside the decompiled page handler rather than from a request against a stock install.
+- **2 with no live product traffic at all** — the shipped ARM binary under `qemu-arm-static` with the sink invoked through a debugger, and no HTTP request ever delivered (finding 3); and static analysis plus a faithful C replication of the sink run on an analysis host, with no physical device (finding 5).
 
+Each advisory says which applies in its own section 9 and repeats it in its summary, and none presents an emulated, replicated or component-level run as an exploit against a live deployed device.
 
-*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog) · [Batch #7](https://0day-rubbish.com/blog) · [Batch #8](https://0day-rubbish.com/blog) · [Batch #9](https://0day-rubbish.com/blog) · [Batch #10](https://0day-rubbish.com/blog) · [Batch #11](https://0day-rubbish.com/blog)*
+*Earlier batches: [Batch #1](https://0day-rubbish.com/blog) · [Batch #2](https://0day-rubbish.com/blog) · [Batch #3](https://0day-rubbish.com/blog) · [Batch #4](https://0day-rubbish.com/blog) · [Batch #5](https://0day-rubbish.com/blog) · [Batch #6](https://0day-rubbish.com/blog) · [Batch #7](https://0day-rubbish.com/blog) · [Batch #8](https://0day-rubbish.com/blog) · [Batch #9](https://0day-rubbish.com/blog) · [Batch #10](https://0day-rubbish.com/blog) · [Batch #11](https://0day-rubbish.com/blog) · [Batch #12](https://0day-rubbish.com/blog)*
 
 ---
 
@@ -116,7 +114,7 @@ In the device-class findings the vulnerable sink was proven under emulation and 
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: Batch 12 — 8 advisories; cumulative 114 across 12 batches
+- **Latest batch**: Batch 13 — 7 advisories; cumulative 121 across 13 batches
 - **Next drop**: every Monday or Tuesday
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
