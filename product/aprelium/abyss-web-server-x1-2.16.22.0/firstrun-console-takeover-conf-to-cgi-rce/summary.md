@@ -6,7 +6,7 @@ Contact: disclosure@0day-rubbish.com
 
 ## Summary
 
-Abyss Web Server X1 2.16.22.0 from Aprelium (Toulouse, France) leaves its HTML administration console
+Abyss Web Server X1 2.16.22.0 from Aprelium (Tunisia) leaves its HTML administration console
 unarmed on first start: the generated `abyss.conf` carries a `<console>` node with no `<login>` and no
 `<password>` element, and while that state holds any client whose source address passes the console's
 `ipcontrol` rule receives `GET /console/credentials` as a `200` credential-creation form and can register
@@ -90,7 +90,7 @@ turns an ordinary access log into an executable path.
 
 ## Affected Products
 
-- Abyss Web Server X1 version 2.16.22.0 from Aprelium (Toulouse, France), a closed-source commercial
+- Abyss Web Server X1 version 2.16.22.0 from Aprelium (Tunisia), a closed-source commercial
   web-server vendor whose Abyss family has shipped for more than twenty years; X1 is the free edition, X2 the
   paid edition. The product self-reports as `Abyss Web Server X1 (v 2.16.22.0)` and sends the banner
   `Abyss/2.16.22.0-X1-Linux AbyssLib/2.16.22.0`; the artefacts identify 2.16.22.0 as the vendor's current

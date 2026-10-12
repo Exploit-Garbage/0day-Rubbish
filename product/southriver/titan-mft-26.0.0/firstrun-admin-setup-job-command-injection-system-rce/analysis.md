@@ -18,7 +18,7 @@ One framing constraint governs the whole advisory and is repeated wherever it co
 
 ### Overview of the product and its runtime stack
 
-Titan MFT Server is a commercial managed file transfer server from South River Technologies, a closed-source vendor based in Virginia, United States, whose product family also includes Titan FTP Server and the WebDrive client. An MFT server is a two-headed thing: a web administration plane in which operators configure domains, connectors, users and scheduled jobs, and a transfer engine that actually moves partner files according to those jobs. The compromise of such a host is categorically different from the compromise of a web application, because the administration plane is where an organisation's trading-partner credentials live.
+Titan MFT Server is a commercial managed file transfer server from South River Technologies, a closed-source vendor based in Annapolis, Maryland, United States, whose product family also includes Titan FTP Server and the WebDrive client. An MFT server is a two-headed thing: a web administration plane in which operators configure domains, connectors, users and scheduled jobs, and a transfer engine that actually moves partner files according to those jobs. The compromise of such a host is categorically different from the compromise of a web application, because the administration plane is where an organisation's trading-partner credentials live.
 
 The version verified here is 26.0.0.364, which self-reports as "Web Version 26.0.364" and belongs to the NextGen generation of the product. The same root cause was reproduced on 26.0.0.348, the immediately previous generation build, whose installer artifact is 312,248,120 bytes. The runtime stack, which matters for both the attack surface and the fix recommendations, is:
 
@@ -87,7 +87,7 @@ The third kind is the absence of prior exploitation. No public exploit or write-
 | Field | Value |
 |---|---|
 | Product | Titan MFT Server (managed file transfer server) |
-| Vendor | South River Technologies, Virginia, United States |
+| Vendor | South River Technologies, Annapolis, Maryland, United States |
 | Version verified | 26.0.0.364 (NextGen generation); same root cause reproduced on 26.0.0.348 |
 | Vulnerable components | WebAdmin Blazor Server administration application, `/Login` first-run setup screen; and the transfer engine's job post-command handler in `Srt.NextGen.ServerCore` |
 | Vulnerability class | CWE-306 Missing Authentication for Critical Function, chained to CWE-78 OS Command Injection |

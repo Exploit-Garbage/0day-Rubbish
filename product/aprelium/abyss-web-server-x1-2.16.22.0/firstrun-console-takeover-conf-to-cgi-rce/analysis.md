@@ -4,7 +4,7 @@
 
 ### Overview of the finding
 
-Abyss Web Server X1 version 2.16.22.0 from Aprelium (Toulouse, France) exposes an unauthenticated
+Abyss Web Server X1 version 2.16.22.0 from Aprelium (Tunisia) exposes an unauthenticated
 administrator-creation endpoint during the interval between first start and the moment somebody sets a
 console password. On first start the server generates its XML configuration file (`abyss.conf`) and the
 `<console>` node in that file carries no `<login>` element and no `<password>` element. That is not a
@@ -56,7 +56,7 @@ the shipped default runtime identity, and it is deployment-dependent.
 
 ### Overview of the product and its runtime stack
 
-Aprelium is a closed-source commercial web-server vendor in Toulouse, France. The Abyss family has been
+Aprelium is a closed-source commercial web-server vendor in Tunisia. The Abyss family has been
 shipping for more than twenty years; X1 is the free edition and X2 is the paid edition. The version studied
 here is 2.16.22.0, which the artefacts identify as the vendor's current official release. The product
 self-reports as `Abyss Web Server X1 (v 2.16.22.0)` and sends the response banner
@@ -184,7 +184,7 @@ public issue, and section 12 scores it on its own merits.
 
 | Item | Value established by this research |
 |---|---|
-| Vendor | Aprelium (Toulouse, France), closed-source commercial vendor |
+| Vendor | Aprelium (Tunisia), closed-source commercial vendor |
 | Product | Abyss Web Server X1 (free edition of the Abyss family) |
 | Version | 2.16.22.0, identified by the artefacts as the vendor's current official release |
 | Self-report | `Abyss Web Server X1 (v 2.16.22.0)` |
