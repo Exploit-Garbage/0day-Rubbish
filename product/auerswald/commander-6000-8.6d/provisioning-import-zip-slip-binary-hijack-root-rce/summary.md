@@ -185,8 +185,7 @@ credentials, call detail records and voicemail for every user it serves.
 
 ## Independence from Published Advisories
 
-The public Auerswald lineage - CVE-2021-40856, CVE-2021-40857, CVE-2021-40858, CVE-2021-40859,
-CVE-2021-40860 and related entries - contains no item with this root cause. The `/debug`
+The public Auerswald lineage - CVE-2021-40856, CVE-2021-40857, CVE-2021-40858, CVE-2021-40859 and related entries - contains no item with this root cause. The `/debug`
 command-execution facet of CVE-2021-40859 has been removed from this build (no such route in the
 750-entry table, `debug.conf` commented out); the `fileName=../../` traversal of CVE-2021-40858 has
 become a SQL query key; and CVE-2021-40857 concerns a sub-admin password parameter, which this chain

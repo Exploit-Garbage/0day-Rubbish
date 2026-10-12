@@ -169,7 +169,7 @@ question we cannot answer from this image, and the advisory does not assert it.
 ### Overview of independence
 
 This is not a re-published public issue. The public Auerswald advisory lineage — CVE-2021-40856,
-CVE-2021-40857, CVE-2021-40858, CVE-2021-40859, CVE-2021-40860 and related entries — contains no
+CVE-2021-40857, CVE-2021-40858, CVE-2021-40859 and related entries — contains no
 item whose root cause is an unsanitised archive extraction in a provisioning import. The closest
 published relatives differ on every axis that matters:
 
