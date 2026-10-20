@@ -6,8 +6,9 @@ Contact: disclosure@0day-rubbish.com
 
 ## Summary
 
-Royal Render 9.1.26b from Holistic IT GmbH (Darmstadt, Germany), the render-farm job manager that schedules
-VFX and animation work across a pool of worker hosts, is a different product from the Royal Server gateway
+Royal Render 9.1.26b, the render-farm job manager that schedules VFX and animation work across a pool of
+worker hosts, is sold by Binary Alchemy (proprietor Holger Schoenberger) of Ludwigsburg, Germany. It is a
+different product from the Royal Server gateway
 sold by Royal Apps GmbH of Austria, and the two share nothing but a word in the name - this advisory is about
 the German render manager only. Its central scheduler `rrServer` speaks a custom binary job protocol on TCP
 7773 and, in the state the product ships in, performs no identity check on a connection whatsoever. That is
@@ -139,12 +140,14 @@ channel is an identity check.
 
 ## Affected Products
 
-- Royal Render version 9.1.26b from Holistic IT GmbH (Darmstadt, Germany), a closed-source commercial
-  render-farm job manager for VFX and animation studios. The installation tree we examined credits the
-  product to Royal Render and its author Holger Bünck, and the job record in the verified capture carries the
-  server version text `rr9.1.26b`; we did not obtain a commercial-registry extract, so the company name used
-  here is carried by the vendor's own product documentation and no claim beyond it is made. This is not the
-  Royal Server product of Royal Apps GmbH (Austria)
+- Royal Render version 9.1.26b, a closed-source commercial render-farm job manager for VFX and animation
+  studios, sold by Binary Alchemy (proprietor Holger Schoenberger) of Ludwigsburg, Germany. The company name
+  is given as the vendor's own legally mandated imprint and data-protection statement publish it, and the job
+  record in the verified capture carries the server version text `rr9.1.26b`, which independently corroborates
+  the version. We did not obtain a commercial-registry extract, so no claim is made beyond that published
+  imprint. Two attributions carried by an earlier revision of this advisory are withdrawn: a company name that
+  appears in no shipped artifact and on no vendor page we hold, and an author name that appears only in our own
+  research notes and in no artifact at all. This is not the Royal Server product of Royal Apps GmbH (Austria)
 - Affected components: `rrServer` / `rrServerconsole` on TCP 7773 in its default authorization state, and the
   `rrClient` / `rrClientconsole` worker that executes the dispatched `Execute` / `Once` command line
 - Distribution artefacts: the Linux installer `rrSetup_linux` and its installation tree, including

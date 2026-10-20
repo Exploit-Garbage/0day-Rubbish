@@ -4,8 +4,9 @@
 
 ### Overview of the finding
 
-Royal Render 9.1.26b, the render-farm job manager sold by Holistic IT GmbH of Darmstadt, Germany, ships a
-central scheduler that accepts job submissions from any TCP client without asking who it is. The product's own
+Royal Render 9.1.26b, the render-farm job manager sold by Binary Alchemy (proprietor Holger Schoenberger) of
+Ludwigsburg, Germany, ships a central scheduler that accepts job submissions from any TCP client without
+asking who it is. The product's own
 help page says so, and says so as the expected condition rather than as a warning: `files/help/Authorization.html`,
 inside the installation tree, states
 
@@ -47,11 +48,17 @@ product's most powerful primitive is reachable by a caller whose identity was ne
 
 Royal Render is a closed-source commercial render farm manager for VFX and animation studios. It is not related
 to the Royal Server gateway product sold by Royal Apps GmbH of Austria, which is a different vendor, a different
-codebase and a different purpose; the two share one word in their names and nothing else. The installation tree
-we examined credits the product to Royal Render and its author Holger Bünck, and the job record inside the
-verified capture carries the server version text `rr9.1.26b`, which independently corroborates the version.
-We did not obtain a commercial-registry extract for Holistic IT GmbH, so the company name in this advisory is
-carried by the vendor's own product documentation and no claim beyond that documentation is made.
+codebase and a different purpose; the two share one word in their names and nothing else. The job record
+inside the verified capture carries the server version text `rr9.1.26b`, which independently corroborates the
+version. The company name used in this advisory is the one the vendor's own legally mandated imprint and
+data-protection statement publish for the enterprise that sells Royal Render, namely "Binary Alchemy Inhaber
+Holger Schoenberger" at Ludwigsburg, Germany, which markets the product through its own domain and publishes a
+support mailbox on it. We did not obtain a commercial-registry extract, so no claim is made beyond that
+published imprint. Two attributions carried by an earlier revision of this advisory are withdrawn here. The
+first is a company name that appears in no shipped artifact and on no vendor page we hold; it reached the text
+without a source and should not have been published. The second is an author name that appears only in our own
+research notes and in no artifact at all, so it cannot be attributed to the installation tree as that revision
+claimed.
 
 The component set, from the shipped tree:
 
@@ -123,7 +130,7 @@ identifiers whose product attribution or root cause we have not confirmed.
 | Property | Value | Evidence class |
 | --- | --- | --- |
 | Product | Royal Render 9.1.26b | vendor tree; job record carries `rr9.1.26b` |
-| Vendor | Holistic IT GmbH, Darmstadt, Germany | vendor product documentation |
+| Vendor | Binary Alchemy (proprietor Holger Schoenberger), Ludwigsburg, Germany | vendor imprint and data-protection statement |
 | Component | `rrServer` / `rrServerconsole`, TCP 7773 | shipped SDK hardcodes the port |
 | Second component | `rrClient` / `rrClientconsole` worker | shipped binary in the tree |
 | Missing control | identity check on connection and on submission | `files/help/Authorization.html`; `globalconfig.ini` |
