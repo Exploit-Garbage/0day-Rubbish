@@ -95,12 +95,27 @@ behind nothing. They are not variants of each other, and the vendor should not e
 one patch point to close both - although the architectural fix (stop handing request
 data to a shell) closes both.
 
-We also examined prior public advisories for this product family and found no
-published advisory whose root cause is command injection in the `setWAN`
-handler of the BR-6478AC, so we treat this as previously undisclosed. We do not list
-adjacent Edimax identifiers here: published records for other Edimax models concern
-different handlers on different firmware lines, and an identifier naming a
-neighbouring product is not evidence about this one.
+CORRECTION, and the reason this paragraph reads differently from the version first published: a public
+identifier already exists for this exact handler on this exact model family. CVE-2026-12807, numbered by a
+third-party numbering authority, describes command injection in the `setWAN` function of the file
+`/goform/setWAN` on the Edimax BR-6478AC V2, reached through the arguments `pppUserName`, `pptpUserName` and
+`L2TPUserName`, and notes that the vendor had been contacted about that disclosure and did not respond. That is
+this finding's handler, this finding's route and this finding's argument set. The earlier revision of this
+advisory stated that no prior public record covered command injection in this handler and treated the finding as
+previously undisclosed; that statement was wrong and is withdrawn here rather than silently removed. It was made
+because the prior-art check could not be completed while the advisory was being written - the search tooling
+available to us was returning an authorisation error - and the check was only run afterwards, against the public
+identifier records, before any identifier request was filed. We did not discover this vulnerability
+independently of the public record, and we are not claiming that we did.
+
+What this advisory still contributes, offered as detail and not as novelty: the analysis of the specific firmware
+build we hold, with the sink addresses and the exact format string read out of that image; the observation that
+the one-character scan for `;` on this path is defeated completely by a payload using `|` together with a
+trailing `#`, which is a statement about the shipped filter rather than about the argument names; the replication
+run showing the injected marker and the absent benign control; and an instruction-level comparison against a
+sibling firmware image whose `setWAN` handler matches ours. No identifier was requested for this finding and none
+should be requested: an identifier already exists, and asking a numbering authority for a second one on the same
+defect would create a competing duplicate rather than add information.
 
 ### Overview — the sibling-model observation, and its limits
 

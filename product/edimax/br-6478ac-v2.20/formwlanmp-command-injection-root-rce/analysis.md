@@ -99,13 +99,24 @@ They share only the architectural root cause: a management server that builds sh
 command lines by string interpolation. Neither finding is a variant of the other,
 and the vendor's engineers should not expect one patch point to close both.
 
-We also examined prior public advisories for this product family. We found no
-published advisory whose root cause is command injection in the `formWlanMP`
-manufacturing handler of the BR-6478AC, and we therefore treat this as previously
-undisclosed. We deliberately do not list adjacent Edimax identifiers here, beyond
-noting that published records for other Edimax models concern different handlers
-on different firmware lines; an identifier that names a neighbouring product is not
-evidence about this one.
+Prior-art position, stated precisely because the first published version of this paragraph was partly wrong and
+is corrected here rather than silently edited. We searched the public identifier records by model number, by
+handler name and by handler-related parameter names. No record names the `formWlanMP` manufacturing handler on
+the BR-6478AC, and on that narrow point the earlier revision was right. The earlier revision also asserted that
+records for other Edimax models concern different handlers on different firmware lines, and that assertion was
+wrong: records do exist for this same handler family on at least four other Edimax models - the BR-6675nD
+(`formWlanMP`), the EW-7438RPn (two records on `formWlanMP`), the BR-6428NS (`/goform/formWlan...`) and the
+BR-6214K (`www/wlanMP.asp`) - plus a Belkin model sharing the handler name, all numbered by a third-party
+numbering authority. So this is a new model carrying an already-numbered sink family, not a novel class of
+defect, and the advisory should never have implied otherwise.
+
+Two consequences we acted on. First, no identifier was requested for this finding: the submitter who has numbered
+this model's other `/goform` handlers has covered them systematically, so a request from us would more likely
+produce a competing duplicate than new information. Second, the value of what remains here is stated as detail:
+the sink addresses and format string extracted from this specific image, the absence of any sanitisation on a
+handler reached without going through the four uptime-gated routes, the replication run with its benign control,
+and the fact that the thirty-field format construction is the same shape a neighbouring model's records describe.
+Those are observations about this firmware, and they do not make the defect new.
 
 ### Overview — affected scope
 
