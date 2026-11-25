@@ -3,7 +3,7 @@
 > **0day vulnerabilities have become rubbish in the AI era.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Latest batch](https://img.shields.io/badge/Latest_batch-11_advisories-red)](https://0day-rubbish.com/blog)
+[![Latest batch](https://img.shields.io/badge/Latest_batch-12_advisories-red)](https://0day-rubbish.com/blog)
 [![Max CVSS](https://img.shields.io/badge/Max_CVSS-9.8-critical)](https://0day-rubbish.com/blog)
 [![PoC](https://img.shields.io/badge/Every_advisory-working_PoC-blue)](https://0day-rubbish.com/blog)
 [![Website](https://img.shields.io/badge/Website-0day--rubbish.com-brightgreen)](https://0day-rubbish.com)
@@ -72,23 +72,24 @@ Our automated vulnerability discovery leverages cutting-edge large language mode
 
 An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM, Kimi) discovers 0-days in real-world enterprise software. Every advisory below ships a **full root-cause analysis** plus a **working, reproducible exploit script** — no detection-only writeups, no withheld details.
 
-### Latest Batch — Batch 17 (11 advisories)
+### Latest Batch — Batch 18 (12 advisories)
 
-*Eleven findings that share one shape: a field an administrator is entitled to type, handed to a shell, a filesystem or a JDBC parser that was never told the field was untrusted. It is the oldest mistake in appliance engineering, and this batch is what it looks like when it is repeated across eleven vendors that each believe their management plane is a trusted environment. Two are reachable with no session at all — a session check that is simply absent from one handler, and an installer that will fetch and unpack an archive from any URL before the product is installed. The other nine sit behind an admin session, and that is exactly why they matter: the credential is the last line, not a mitigation.*
+*Twelve findings, one theme again: a value an administrator is entitled to type, handed to a shell, a path or a deserializer that was never told the value was untrusted. Two are reachable with no session at all - a factory credential pair that opens the API, and a helpdesk field anonymous visitors can write - while the other ten need an admin session. Three come from NETGEAR's router and switch management planes; the rest spread across a helpdesk, a data pipeline, a console server, an NVR, two VoIP devices, a serial device server, a cellular router and Moxa's device-management console. Every advisory states its own verification boundary and ships a working PoC.*
 
 | # | Product | Affected Version | CVSS | Class | Advisory & PoC |
 |---|---------|------------------|------|-------|-----------------|
-| 1 | Peplink PotSa EU | firmware fw-potsa_eu-1.2.0-build1873 | **9.8** | The unauthenticated WiFi setup action formats the passphrase into a `popen` line inside single quotes; one apostrophe breaks out into the daemon's root shell, and the handler's cookie check is structurally absent | [WiFi passphrase → web_httpd root shell](https://0day-rubbish.com/blog/wifi-passphrase-command-injection-root-rce) |
-| 2 | NetCat CMS / NetCat E-Commerce | 7.2.0 (build 26228) | **9.8** | The installer's restore-from-URL path fetches an attacker archive and extracts it over the document root of a pristine, uninstalled instance; one anonymous request pair writes an executable page and fetches it back | [installer restore-from-URL → web-root code execution](https://0day-rubbish.com/blog/installer-remote-archive-rce) |
-| 3 | D-Link DAP-2310B (DAP-2660 byte-identical merge) | as shipped | **7.2** | The `atp` template processor's `ExeShell` expands `$( )` in a submitted value before the line reaches the shell | [ExeShell → root command injection](https://0day-rubbish.com/blog/exeshell-command-injection-root-rce) |
-| 4 | Grandstream GDS371x | Release_GDS371x_1.0.13.10 | **7.2** | `/goform/apicmd`'s `cmd=` dispatcher builds `rm -rf /tmp/<name>` with `%s` and no quoting; `;` and `$(` survive a `tolower()`-only filter and reach `system()` | [apicmd config rm → shell](https://0day-rubbish.com/blog/apicmd-config-rm-command-injection-root-rce) |
-| 5 | Eltex SMG-1016M | 3.20.5.4900 | **7.2** | `clish`'s `ftpd user add` passes unquoted user and password arguments into vendor `adduser`/`passwdch`/`deluser` scripts that re-expand them | [clish ftpd user add → helper-script shell](https://0day-rubbish.com/blog/clsh-ftp-user-command-injection-root-rce) |
-| 6 | Advantech EKI-1522-AE | firmware D1.99_r3510 | **7.2** | The mail-alarm configuration fields are interpolated into a shell command the web management plane executes with root authority | [mail-server fields → root shell](https://0day-rubbish.com/blog/mail-server-command-injection-root-rce) |
-| 7 | Cambium E410 / E510 / E600 / E700 | 4.2.3.3-r9 | **7.2** | A query parameter becomes a path inside `upload.sh`; traversal lands a script that the CGI trigger then runs as root | [upload.sh traversal → root execution](https://0day-rubbish.com/blog/uploadsh-path-traversal-root-rce) |
-| 8 | SearchBlox Enterprise Search | 12.1.2 (build 202607202005) | **7.2** | The admin "Database URL String" field is concatenated into a JDBC URL; H2's `INIT=RUNSCRIPT` parses attacker SQL and a Java UDF reaches `Runtime.exec` as the service account — `uid=999`, not root, and the advisory says so | [database URL → JDBC injection → service-account execution](https://0day-rubbish.com/blog/jdbc-url-injection-h2-init-rce) |
-| 9 | StoneFly SCVM | 8.0.4.29 | **7.2** | `ff_isns.pl` interpolates the `ipaddress` parameter into `sf_ping()`, which stages a root `ping` wrapper through a NOPASSWD `command.pl` | [iSNS ipaddress → root command injection](https://0day-rubbish.com/blog/ff-isns-ipaddress-command-injection-root-rce) |
-| 10 | VoIPTools Relay for 3CX | 20.9.34 | **7.2** | `SetLinuxFolderPermissions` concatenates its `permissions` value into a shell command the Relay service executes as root | [permissions value → root shell](https://0day-rubbish.com/blog/setlinuxfolderpermissions-command-injection-root-rce) |
-| 11 | Maian Cube | 1.x (PHP 8.2) | **7.2** | The license-generation passphrase field reaches `shell_exec` in the admin panel, executing as the PHP process user | [license passphrase → PHP process shell](https://0day-rubbish.com/blog/license-gen-command-injection-rce) |
+| 1 | Cribl Edge | 4.19.2-89cac507 | **9.8** | Factory-default administrator credentials open the API; the Exec Source command field then runs with the service's authority | [unauth default creds exec source rce](https://0day-rubbish.com/blog/unauth-default-creds-exec-source-rce) |
+| 2 | Kayako Classic | 4.98.9 | **7.5** | An anonymous ticket's custom field is stored raw and later reaches a bare `mb_unserialize` on the staff SELECTLINKED path; a destructor chain ends in `system()` | [selectlinked unserialize rce](https://0day-rubbish.com/blog/selectlinked-unserialize-rce) |
+| 3 | NETGEAR RAX200 | V1.0.11.148 | **7.2** | bftpd's RNTO rename escapes the FTP chroot and overwrites the OpenVPN configuration the router loads | [bftpd rnto escape openvpn conf hijack rce](https://0day-rubbish.com/blog/bftpd-rnto-escape-openvpn-conf-hijack-rce) |
+| 4 | NETGEAR ProSafe | 12.0.19.23 | **7.2** | The REST agent's firmware-URL download value is interpolated into a shell command | [restagent fwurl command injection root rce](https://0day-rubbish.com/blog/restagent-fwurl-command-injection-root-rce) |
+| 5 | NETGEAR R9000 | as shipped | **7.2** | A MAC address submitted to `plex_net_dev` reaches the root CGI's command line | [plex net dev mac command injection](https://0day-rubbish.com/blog/plex-net-dev-mac-command-injection) |
+| 6 | Lantronix LSS2200-8P | v2.1.0.0R2 | **7.2** | The Percepxion registration response is parsed into a command executed by the root provisioning client | [percepxion remote access host rce](https://0day-rubbish.com/blog/percepxion-remote-access-host-rce) |
+| 7 | D-Link DNR-326 | v2.70b04 | **7.2** | `dsk_mgr.cgi`'s `f_sethdsize` value lands in the diskmgr shell pipeline | [dsk mgr command injection root rce](https://0day-rubbish.com/blog/dsk-mgr-command-injection-root-rce) |
+| 8 | Grandstream HT801 | v1.0.65.1 | **7.2** | The time-zone setting is echoed into a shell command by `gs_cpe` without quoting | [timezone command injection root rce](https://0day-rubbish.com/blog/timezone-command-injection-root-rce) |
+| 9 | Grandstream GDS371x | 1.0.13.10 | **7.2** | An `ldc.cgi` query parameter reaches the `test_ldc` `system()` line | [ldc cgi command injection root rce](https://0day-rubbish.com/blog/ldc-cgi-command-injection-root-rce) |
+| 10 | Advantech EKI-1224-CE | D1.06_r5772 | **7.2** | A ConfigImport bypass lets a value reach the `edgserver` `system()` call in the NTP-update thread | [edgserver configimport command injection root rce](https://0day-rubbish.com/blog/edgserver-configimport-command-injection-root-rce) |
+| 11 | Moxa OnCell Central Manager | v2.4.1 | **7.2** | The `uploadFw` filename is concatenated into the destination path; traversal lands a JSP in the Tomcat webroot, which the service then serves | [uploadfw path traversal rce](https://0day-rubbish.com/blog/uploadfw-path-traversal-rce) |
+| 12 | DigitalYacht 4GConnect | RutOS 7.2.x | **7.2** | The profile name is concatenated unquoted into `os.execute` in `profiles.lua` | [profiles lua command injection root rce](https://0day-rubbish.com/blog/profiles-lua-command-injection-root-rce) |
 
 *Every previous batch and its advisories are listed under [Releases](https://github.com/Exploit-Garbage/0day-Rubbish/releases).*
 
@@ -98,7 +99,7 @@ An AI-driven research process (multi-LLM ensemble: Claude, OpenAI, DeepSeek, GLM
 
 This is a **continuous disclosure series**. Thanks to continuous optimization, the AI-driven discovery pipeline now produces new 0-day findings at a stable daily rate, and we disclose verified batches on a **weekly cadence**.
 
-- **Latest batch**: Batch 17 — 11 advisories; cumulative 155 across 17 batches
+- **Latest batch**: Batch 18 — 12 advisories; cumulative 167 across 18 batches
 - **Next drop**: every Monday or Tuesday
 - **Future scope**: expanding beyond enterprise IT into **ICS / SCADA, energy, and aerospace** systems
 
